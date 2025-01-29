@@ -1,4 +1,4 @@
-import { allProjects } from "./samples.js";
+import { allProjects } from "./storage.js";
 
 
 export function getAllProjects() {

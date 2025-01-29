@@ -19,6 +19,8 @@ let sampleProject = {
 export let allProjects = [
     sampleProject,
     sampleProject,
+    sampleProject,
+    sampleProject,
     sampleProject
 ]
 
