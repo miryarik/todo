@@ -12,7 +12,7 @@ html {
     --main-green: #34A853;
     --main-yellow: #FBBC04;
 
-    --light-grey: #F1F3F4;
+    --light-grey: white;
     --main-grey: #424242;
 
     --icon-size: 40px;
@@ -32,6 +32,135 @@ body {
 
     display: grid;
     grid-template: 1fr / 250px 1fr;
+
+
+    & dialog#new-project-dialog {
+
+        height: 55%;
+        max-height: 600px;
+        width: 30%;
+        min-width: 400px;
+
+        margin: auto;
+        
+        padding: var(--major-gap);
+
+        background-color: var(--accent-blue);
+
+        border: 6px solid var(--main-blue);
+        border-radius: 12px;
+
+        & form {
+            height: 100%;
+
+            display: grid;
+            grid-template: 50px 1fr 50px 80px / 1fr;
+            justify-content: center;
+            align-items: center;
+            gap: var(--major-gap);
+
+            
+            & .name {
+                font-size: 20px;
+            }
+            
+            & .name,
+            & .description {
+
+                height: 100%;
+                
+                & > * {
+                    height: 100%;
+                    width: 100%;
+                    
+                    background-color: var(--light-grey);
+
+                    padding: var(--minor-gap);
+
+                    border: 2px solid var(--accent-blue);
+                    border-radius: 8px;
+
+                    resize: none;
+
+                    &:focus,
+                    &:hover {
+                        cursor: pointer;
+                        outline: 4px solid var(--main-blue);
+                    }
+
+                    &:user-invalid {
+                        outline: 4px solid var(--main-red);
+                    }
+                }
+
+            }
+
+
+            & .dates,
+            & .options {
+                height: 100%;
+
+                display: flex;
+                justify-content: center;
+                gap: var(--minor-gap);
+               
+                & > * {
+                    flex: 1;
+                    text-align: center;
+                    align-self: center;
+
+                    padding: var(--minor-gap);
+
+                    border: 2px solid var(--accent-blue);
+                    border-radius: 8px;
+
+                    &:focus,
+                    &:hover {
+                        cursor: pointer;
+                        outline: 4px solid var(--main-blue);
+                    }
+                }
+
+
+                & button {
+                    height: 100%;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: var(--minor-gap);
+
+                    color: white;
+
+                    font-size: 24px;
+
+                    & svg {
+                        fill: white;
+                        height: 40px;
+                        width: 40px;
+                    }
+                    
+                    border: none;
+                    outline: none;
+                    
+                    &:focus,
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    &#cancel {
+                        background-color: var(--main-red);
+                    }
+
+                    &#submit {
+                        background-color: var(--main-green);
+                    }
+                }
+            }
+            
+            
+        }
+    }
 
     
     & sidebar {

@@ -6,4 +6,5 @@ import { createNewProject } from "./projectManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     renderSidebar();
+    displayAllProjects();
 });

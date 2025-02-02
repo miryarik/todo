@@ -16,7 +16,7 @@ export function renderSidebar() {
     const createNewProjectNav = createNavItem("create-new-project", "New project", "");
     sidebar.appendChild(createNewProjectNav);
     createNewProjectNav.onclick = () => {
-        createNewProject("New", "this is a new project", "1-1-2000","2-2-2000", []);
+        document.querySelector("dialog#new-project-dialog").showModal();
     };
 
     // make all projects list
