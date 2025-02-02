@@ -73,6 +73,18 @@ body {
             flex-direction: column;
             gap: var(--minor-gap);
 
+            max-height: 500px;
+
+
+            /* hide scroll bar */
+            -ms-overflow-style: none; 
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            overflow-y: auto;
+
             border-radius: var(--item-border-rad);
             
             padding: var(--minor-gap);
@@ -83,6 +95,9 @@ body {
                 border-radius: var(--item-border-rad);
                 
                 background-color: var(--light-blue);
+
+                max-height: 52px;
+                min-height: 52px;
 
                 padding: var(--minor-gap);
 
@@ -124,7 +139,7 @@ body {
 
 
                     display: grid;
-                    grid-template: 40px 1fr 50px / 1fr;
+                    grid-template: 40px 1fr 20px 50px / 1fr;
                     gap: var(--minor-gap);
                     align-items: center;
 
@@ -137,6 +152,10 @@ body {
                         align-self: start;
                         
                         font-size: 16px;
+                        color: var(--main-grey);
+                    }
+
+                    & .dates {
                         color: var(--main-grey);
                     }
 

@@ -25,6 +25,11 @@ function makeProjectCard(project) {
     description.classList.add('description');
     description.innerText = project.description;
 
+    // add dates
+    const dates = document.createElement('div');
+    dates.classList.add('dates');
+    dates.innerText = `${project.startDate} - ${project.endDate}`;
+
     // add options div
     const options = document.createElement('div');
     options.classList.add('options');
@@ -36,7 +41,7 @@ function makeProjectCard(project) {
     optionButtons[2].classList.add('check');
     appendChildren(options, optionButtons);
     
-    appendChildren(projectCard, [name, description, options]);
+    appendChildren(projectCard, [name, description, dates, options]);
 
     return projectCard;
 }

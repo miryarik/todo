@@ -6,8 +6,4 @@ import { createNewProject } from "./projectManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     renderSidebar();
-
-    document.querySelector("#all-projects-nav").onclick = () => {
-        displayAllProjects();
-    }
 });
