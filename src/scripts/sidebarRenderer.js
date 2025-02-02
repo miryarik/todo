@@ -4,8 +4,7 @@ import { getAllProjectNames, createNewProject } from "./projectManager.js";
 export function renderSidebar() {
     const sidebar = document.querySelector("sidebar");
     sidebar.innerHTML = "";
-    // this allows updating sidebar on any click
-    sidebar.onclick = renderSidebar;
+    
     
     // render all projects nav item 
     const allProjectsNav = createNavItem("all-projects-nav", "All projects", "");
@@ -34,6 +33,12 @@ export function renderSidebar() {
 
         projectsDiv.appendChild(project);
         project.appendChild(label);
+    });
+
+    // sidebar refreshes on certain events:
+    // new project is made
+    document.addEventListener("NewProjectMade", () => {
+        renderSidebar();
     });
 
 }

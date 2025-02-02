@@ -72,4 +72,10 @@ export function displayAllProjects() {
         const projectCard = makeProjectCard(project);
         container.appendChild(projectCard);
     });
+
+    // content should refresh on events:
+    // when new project is made
+    document.addEventListener("NewProjectMade", () => {
+        displayAllProjects();
+    });
 }
