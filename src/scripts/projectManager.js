@@ -14,3 +14,22 @@ export function getAllProjectNames() {
 
     return names;
 }
+
+export function createNewProject(name, description, startDate, endDate, tasks) {
+    // create operation
+    // adds a new project to the storage
+    // as per specifications 
+
+    if (name) {
+        const newProject = {
+            "name": name,
+            "description": description,
+            "startDate": startDate,
+            "endDate": endDate,
+            "tasks": tasks,
+        };
+
+        allProjects.push(newProject);
+        
+    }
+}

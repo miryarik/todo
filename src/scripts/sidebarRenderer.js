@@ -7,6 +7,7 @@ export function renderSidebar() {
     // render all projects nav item 
     const allProjectsNav = document.createElement("div");
     allProjectsNav.classList.add("nav-item");
+    allProjectsNav.setAttribute("id", "all-projects-nav");
     sidebar.appendChild(allProjectsNav);
     
     const allProjectsNavIcon = document.createElement("img");

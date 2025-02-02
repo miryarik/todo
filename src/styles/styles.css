@@ -51,7 +51,7 @@ body {
             display: flex;
             align-items: center;
 
-            margin-bottom: var(--major-gap);            
+            margin-bottom: var(--minor-gap);
 
             padding: 10px;
 
@@ -62,6 +62,10 @@ body {
             & img {
                 height: 100%;
             }
+        }
+
+        & logo.nav-item {
+            margin-bottom: var(--major-gap);
         }
 
         & .nav-list {
@@ -81,6 +85,10 @@ body {
                 background-color: var(--light-blue);
 
                 padding: var(--minor-gap);
+
+                text-wrap: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
         }
     }
