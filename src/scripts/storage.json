@@ -4,6 +4,7 @@
         "description": "Revamping the company's website to improve user experience and modernize the design.",
         "startDate": "01-03-2025",
         "endDate": "01-09-2025",
+        "id" : "1",
         "tasks": [
             {
                 "name": "Gather Requirements",
@@ -30,6 +31,7 @@
         "description": "Launching a social media and email marketing campaign to increase brand awareness.",
         "startDate": "01-06-2025",
         "endDate": "30-09-2025",
+        "id" : "2",
         "tasks": [
             {
                 "name": "Define Target Audience",
@@ -56,6 +58,7 @@
         "description": "Building a cross-platform mobile application for tracking fitness activities.",
         "startDate": "15-04-2025",
         "endDate": "15-10-2025",
+        "id" : "3",
         "tasks": [
             {
                 "name": "Research Competitors",
@@ -82,6 +85,7 @@
         "description": "Conducting a security audit of company systems and implementing necessary improvements.",
         "startDate": "10-07-2025",
         "endDate": "30-11-2025",
+        "id" : "4",
         "tasks": [
             {
                 "name": "Identify Vulnerabilities",
