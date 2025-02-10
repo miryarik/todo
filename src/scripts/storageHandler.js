@@ -7,7 +7,7 @@ const STORAGE_KEY = "todolist";
 // todolist object T_T this is so weird to do
 let TODOLIST = {
     "projects": [],
-    "tasks": []
+    "tasks": [],
 };
 
 
@@ -24,6 +24,18 @@ function getCurrentStorage() {
     // or the empty array if localStorage does not have the key
 
     return JSON.parse(localStorage.getItem(STORAGE_KEY));
+}
+
+
+function getNewId() {
+    // generate a new date and time based unique id (unique to a millisecond)
+    // so basically a timestamp T_T
+    // format : year-month-date-time(in ms)
+
+    const date = new Date();
+
+    const id = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}${date.getTime()}`;
+    return id;
 }
 
 
@@ -45,24 +57,13 @@ export const projectHandler = (() => {
     // on the projects in localStorage key
 
 
-    // an id counter as a hack
-    let nextId = 2;
-
-
-    function Project(name, description, ) {
+    function Project(name, description, id) {
         // project object factory
 
         this.name = name;
         this.description = description;
-        this.id = getNewId();
+        this.id = id ? id : getNewId();
 
-        function getNewId() {
-            // const allProjects = getAllProjects();
-            // return allProjects.length;
-
-            nextId++;
-            return nextId;
-        }
     }
 
 
@@ -74,7 +75,7 @@ export const projectHandler = (() => {
 
         const projectObjects = storedProjects.map(project => {
             // make new object
-            const projectObject = new Project(project.name, project.description);
+            const projectObject = new Project(project.name, project.description, project.id);
             return projectObject;
         });
 
@@ -159,15 +160,15 @@ export const taskHandler = (() => {
     // handles all CRUD operations and requests for tasks
     // in localStorage.todolist.tasks
 
-    function Task(name, description, dueDate, priority, id, projectId) {
+    function Task(name, description, dueDate, priority, projectId, id) {
         // task object factory
 
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.id = id;
         this.projectId = projectId;
+        this.id = id ? id : getNewId();
 
     }
 
@@ -228,10 +229,10 @@ export const taskHandler = (() => {
     }
 
 
-    function createNewTask(name, description, dueDate, priority, id, projectId) {
+    function createNewTask(name, description, dueDate, priority, projectId) {
         // add a new task to storage on localStorage
 
-        const task = new Task(name, description, dueDate, priority, id, projectId);
+        const task = new Task(name, description, dueDate, priority,projectId);
 
         // add task to TODOLIST.tasks
         TODOLIST.tasks.push(task);
