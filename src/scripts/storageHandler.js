@@ -6,7 +6,7 @@ const STORAGE_KEY = "todolist";
 
 // todolist object T_T this is so weird to do
 let TODOLIST = {
-    "project": [],
+    "projects": [],
     "tasks": []
 };
 
@@ -112,7 +112,7 @@ export const projectHandler = (() => {
 
 
     function getProjectById(id) {
-        // get project from current localStorage using id
+        // get project using specified id
 
         const projects = getAllProjects();
         return projects.find(project => project.id == id);
@@ -130,11 +130,11 @@ export const projectHandler = (() => {
 
 
 
-    function deleteProject(targetId) {
+    function deleteProject(projectId) {
         // remove project with target id from TODOLIST.projects
 
         // find the index of project with target id
-        const idx = TODOLIST.projects.findIndex(project => project.id == targetId);
+        const idx = TODOLIST.projects.findIndex(project => project.id == projectId);
 
         // remove the element at this index
         TODOLIST.projects.splice(idx, 1);
@@ -159,5 +159,103 @@ export const taskHandler = (() => {
     // handles all CRUD operations and requests for tasks
     // in localStorage.todolist.tasks
 
+    function Task(name, description, dueDate, priority, id, projectId) {
+        // task object factory
+
+        this.name = name;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.id = id;
+        this.projectId = projectId;
+
+    }
+
+
+    function loadTasksFromStorage() {
+        // make task object for each task stored in localStorage
+        // put them in TODOLIST.tasks
+
+        const storedTasks = getCurrentStorage().tasks;
+
+        const taskObjects = storedTasks.map(task => {
+            // map each stored task to object task
+            const taskObject = new Task(task.name, task.description, task.dueDate, task.priority, task.id, task.projectId);
+            return taskObject;
+        });
+
+        TODOLIST.tasks = taskObjects;
+    }
+
+
+    function saveTasksToStorage() {
+        // set the tasks from TODOLIST.tasks to
+        // localStorage.todolist.tasks key
+
+        // make an updated storage object
+        // using tasks from TODOLIST.tasks
+        const storage = getCurrentStorage();
+        storage.tasks = TODOLIST.tasks.map(task => {
+
+            return {
+                "name": task.name,
+                "description": task.description,
+                "dueDate": task.dueDate,
+                "priority": task.priority,
+                "id": task.id,
+                "projectId" : task.projectId
+            }
+
+        });
+
+        // update the localStorage with new storage;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(storage));
+    }
+
+
+    function  getAllTasks() {
+        // return an array of all tasks in the TODOLIST
+
+        return TODOLIST.tasks;
+    }
+
+
+    function getTaskById(taskId) {
+        // get task by specified id
+
+        const tasks = getAllTasks();
+        return tasks.find(task => task.id == taskId);
+    }
+
+
+    function createNewTask(name, description, dueDate, priority, id, projectId) {
+        // add a new task to storage on localStorage
+
+        const task = new Task(name, description, dueDate, priority, id, projectId);
+
+        // add task to TODOLIST.tasks
+        TODOLIST.tasks.push(task);
+    }
+
+
+    function deleteTask(taskId) {
+        // remove the task with taskId from TODOLIST.tasks
+
+        // find its index
+        const idx = TODOLIST.tasks.findIndex(task => task.id == taskId);
+
+        // remove the task
+        TODOLIST.tasks.splice(idx, 1);
+    }
+
+
+    return {
+        loadTasksFromStorage,
+        saveTasksToStorage,
+        getAllTasks,
+        getTaskById,
+        createNewTask,
+        deleteTask
+    }
 
 })();

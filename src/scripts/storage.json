@@ -18,6 +18,7 @@
             "description": "Collect feedback from stakeholders and users to define key features.",
             "dueDate": "05-03-2025",
             "priority": "high",
+            "id": 1,
             "projectId" : 1
         },
         {
@@ -25,6 +26,7 @@
             "description": "Create initial wireframe layouts for main pages.",
             "date": "15-03-2025",
             "priority": "medium",
+            "id": 2,
             "projectId" : 1
         },
         {
@@ -32,6 +34,7 @@
             "description": "Implement the UI based on approved designs using React.",
             "date": "10-04-2025",
             "priority": "high",
+            "id": 3,
             "projectId" : 1
         },
         {
@@ -39,6 +42,7 @@
             "description": "Analyze customer data to identify target demographics.",
             "date": "05-06-2025",
             "priority": "high",
+            "id": 4,
             "projectId" : 2
         },
         {
@@ -46,6 +50,7 @@
             "description": "Draft a content calendar for posts and email newsletters.",
             "date": "15-06-2025",
             "priority": "medium",
+            "id": 5,
             "projectId" : 2  
         },
         {
@@ -53,6 +58,7 @@
             "description": "Run social media ads and send out email sequences.",
             "date": "01-07-2025",
             "priority": "high",
+            "id": 6,
             "projectId" : 2
         }
     ]
