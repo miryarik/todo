@@ -1,93 +1,62 @@
-import { projectHandler, taskHandler, loadCurrentStorage } from "./storageHandler.js"
-
-function displayList() {
-    // dummy function to display list of projects
-
-    const allProjects = projectHandler.getAllProjects();
-    const ulProj = document.querySelector("#project-list ul");
-    ulProj.innerHTML = "";
-
-    allProjects.forEach(project => {
-        const li = document.createElement('li');
-        li.setAttribute('id', project.id);
-        li.innerText = project.name;
-
-        const btn = document.createElement('button');
-        btn.innerText = "delete";
-
-        btn.addEventListener("click", () => {
-            projectHandler.deleteProject(li.getAttribute('id'));
-            displayList();
-        });
-
-        li.appendChild(btn);
-
-        ulProj.appendChild(li);
-
-    });
-
-
-    const allTasks = taskHandler.getAllTasks();
-    const ulTask = document.querySelector("#task-list ul");
-    ulTask.innerHTML = "";
-
-    allTasks.forEach(task => {
-        const li = document.createElement('li');
-        li.setAttribute('id', task.id);
-        li.innerText = task.name;
-
-        const btn = document.createElement('button');
-        btn.innerText = "delete";
-
-        btn.addEventListener("click", () => {
-            taskHandler.deleteTask(li.getAttribute('id'));
-            displayList();
-        });
-
-        li.appendChild(btn);
-
-        ulTask.appendChild(li);
-    });
-}
-
+import {Project, projectApi} from "./lib/projects";
+import {Task, tasksApi} from "./lib/tasks";
+import {renderProjects, renderTasks} from "./lib/render";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // what whatever we have
-    loadCurrentStorage();
-    projectHandler.loadProjectsFromStorage();
-    taskHandler.loadTasksFromStorage();
-    
-
-    const newProjBtn = document.querySelector("button#new-project-btn");
-    newProjBtn.addEventListener("click", () => {
-        const name = document.querySelector('form#projects-form input#name').value;
-        const description = document.querySelector('form input#description').value;
-
-        projectHandler.createNewProject(name, description);
-
-        displayList();
-    });
-
-    const newTaskBtn = document.querySelector("button#new-task-btn");
-    newTaskBtn.addEventListener("click", () => {
-        const name = document.querySelector('form#tasks-form input#name').value;
-        const description = document.querySelector('form input#description').value;
-
-        taskHandler.createNewTask(name, description);
-
-        displayList();
-    });
-
-    displayList();
-
+    setupProjectButtons();
+    setupTaskButtons();
+    projectApi.load();
+    tasksApi.load();
+    renderView();
 });
-
 
 window.addEventListener('beforeunload', () => {
-    // Save current state back to localStorage
-    projectHandler.saveProjectsToStorage();
-    taskHandler.saveTasksToStorage();
-
+    projectApi.save();
+    tasksApi.save();
 });
 
+function setupProjectButtons() {
+    let resetProjectButton = document.querySelector("#reset-project-btn")
+    resetProjectButton.onclick = () => {
+        projectApi.reset();
+        renderView();
+    };
 
+    let newProjectButton = document.querySelector("#new-project-btn")
+    newProjectButton.onclick = () => {
+        createNewProject();
+        renderView();
+    }
+}
+
+function setupTaskButtons() {
+    let resetTaskButton = document.querySelector("#reset-task-btn")
+    resetTaskButton.onclick = () => {
+        tasksApi.reset();
+        renderView();
+    }
+
+    let newTaskButton = document.querySelector("#new-task-btn");
+    newTaskButton.onclick = () => {
+        createNewTask();
+        renderView();
+    }
+}
+
+function createNewProject() {
+    const name = document.querySelector('#project-name').value;
+    const description = document.querySelector('#project-description').value;
+    projectApi.add(new Project(name, description));
+}
+
+function createNewTask() {
+    const name = document.querySelector('#task-name').value;
+    const description = document.querySelector('#task-description').value;
+    const task = new Task(name, description, null, null)
+    tasksApi.add(task)
+}
+
+function renderView() {
+    renderProjects();
+    renderTasks();
+}
