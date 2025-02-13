@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
 </head>
+
 <body>
+
+    <dialog class="new-project-dialog">
+        <h1></h1>
+        <form method="dialog">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="description" placeholder="Description">
+            <button>Add</button>
+        </form>
+    </dialog>
+
+    <dialog class="new-task-dialog">
+        <h1></h1>
+        <form method="dialog">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="description" placeholder="description">
+            <input type="date" id="due-date">
+            <select id="priority">
+                <option value="high">Low</option>
+                <option value="high">Normal</option>
+                <option value="high">High</option>
+            </select>
+        </form>
+    </dialog>
 
     <sidebar>
         <div class="tasks sidebar-item">

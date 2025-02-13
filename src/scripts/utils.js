@@ -10,3 +10,28 @@ export function getNewId() {
     
     return id;
 }
+
+
+export function getCards(projects) {
+
+    const cards = []
+
+    projects.forEach(project => {
+
+        const card = document.createElement("card");
+        card.setAttribute("id", project.id);
+
+        const name = document.createElement("h3");
+        name.innerText = project.name;
+
+        const description = document.createElement("p");
+        description.innerText = project.description;
+
+        card.appendChild(name);
+        card.appendChild(description);
+        cards.push(card);
+        
+    });
+    
+    return cards;
+}

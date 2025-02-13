@@ -13,10 +13,11 @@ body {
     padding: 0;
 
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 240px 1fr;
+
 
     sidebar {
         background-color: var(--blue-main);
@@ -27,8 +28,11 @@ body {
         flex-direction: column;
         gap: 20px;
 
+
         .sidebar-item {
-            border: 2px solid red;
+            border-radius: 12px;
+
+            padding: 18px;
 
             background-color: var(--blue-light);
 
@@ -41,6 +45,7 @@ body {
         
     }
 
+
     container {
 
         display: grid;
@@ -49,7 +54,43 @@ body {
         background-color: var(--content-blue-light);
 
         header {
+
+            grid-row: 1;
+
+            font-size: 32px;
+
+            padding: 10px 20px;
+
+            vertical-align: center;
+
             background-color: var(--blue-light);
+        }
+
+        content {
+
+            grid-row: 2;
+
+            padding: 20px;
+
+            &.all-projects {
+
+                display: grid;
+                grid-template-rows: repeat(3, 300px);
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 20px;
+
+                
+
+            }
+
+            card {
+                background-color: var(--blue-light);
+
+                padding: 20px;
+
+                border-radius: 12px;
+            }
+
         }
     }
 }
