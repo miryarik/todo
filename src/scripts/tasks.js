@@ -8,7 +8,6 @@ import SAMPLE_TASKS from "./data/tasks.json";
 let TASKS = [];
 const STORAGE_KEY = "TASKS";
 
-
 function Task(name, description, dueDate, priority, projectId, id) {
     // task object factory
 
@@ -23,7 +22,6 @@ function Task(name, description, dueDate, priority, projectId, id) {
 function resetStorage() {
     // reset tasks in localStorage to sample tasks
     localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_TASKS));
-
 }
 
 function getTasksFromStorage() {
@@ -40,11 +38,10 @@ function loadTasksFromStorage() {
 
     if (!storedTasks) {
         // if storage is empty reset to samples
-        
+
         resetStorage();
         storedTasks = getTasksFromStorage();
     }
-
 
     const taskObjects = storedTasks.map((task) => {
         // map each stored task to object task
@@ -53,8 +50,8 @@ function loadTasksFromStorage() {
             task.description,
             task.dueDate,
             task.priority,
-            task.id,
-            task.projectId
+            task.projectId,
+            task.id
         );
         return taskObject;
     });
@@ -76,8 +73,8 @@ function saveTasksToStorage() {
             description: task.description,
             dueDate: task.dueDate,
             priority: task.priority,
-            id: task.id,
             projectId: task.projectId,
+            id: task.id,
         };
     });
 
@@ -95,6 +92,16 @@ function getTaskById(taskId) {
 
     const tasks = getAllTasks();
     return tasks.find((task) => task.id == taskId);
+}
+
+function getTasksByProjectId(projectId) {
+    // get all tasks
+    // filter them by given project id
+
+    const allTasks = getAllTasks();
+    const projectTasks = allTasks.filter((task) => task.projectId == projectId);
+
+    return projectTasks;
 }
 
 function createNewTask(name, description, dueDate, priority, projectId) {
@@ -118,6 +125,7 @@ export const taskHandler = {
     saveTasksToStorage,
     getAllTasks,
     getTaskById,
+    getTasksByProjectId,
     createNewTask,
     deleteTask,
 };

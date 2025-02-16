@@ -9,7 +9,6 @@ import SAMPLE_PROJECTS from "./data/projects.json";
 let PROJECTS = [];
 const STORAGE_KEY = "PROJECTS";
 
-
 function Project(name, description, id) {
     // project object factory
 
@@ -18,12 +17,10 @@ function Project(name, description, id) {
     this.id = id ? id : getNewId();
 }
 
-
 function resetStorage() {
     // reset projects in localStorage to samples
     localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_PROJECTS));
 }
-
 
 function getProjectsFromStorage() {
     // return projects stored in localStorage
@@ -31,22 +28,18 @@ function getProjectsFromStorage() {
     return storedProjects;
 }
 
-
 function loadProjectsFromStorage() {
     // make project object for each project stored in localStorage
     // put them in PROJECTS
 
     let storedProjects = getProjectsFromStorage();
-    
-    
-    
+
     if (!storedProjects) {
         // if storage is empty reset to samples
-        
+
         resetStorage();
         storedProjects = getProjectsFromStorage();
     }
-
 
     const projectObjects = storedProjects.map((project) => {
         // make new object
@@ -60,7 +53,6 @@ function loadProjectsFromStorage() {
 
     PROJECTS = projectObjects;
 }
-
 
 function saveProjectsToStorage() {
     // set the localStorage.PROJECTS key
