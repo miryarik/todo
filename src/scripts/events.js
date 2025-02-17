@@ -28,8 +28,11 @@ function initDialogEvents() {
     taskDialog.querySelector("button").addEventListener("click", () => {
         const name = taskDialog.querySelector("input#name").value;
         const description = taskDialog.querySelector("input#description").value;
+        const dueDate = taskDialog.querySelector("input#due-date").value;
+        const priority = taskDialog.querySelector("select#priority").value;
+        const projectId = taskDialog.querySelector("select#project").value;
 
-        taskHandler.createNewTask(name, description);
+        taskHandler.createNewTask(name, description, dueDate, priority, projectId);
 
         sidebarRenderer.renderTaskList();
         contentRenderer.renderAllTasks();
@@ -45,7 +48,9 @@ function setupSidebarButtons() {
     );
 
     newTaskBtn.addEventListener("click", () => {
-        renderNewTaskDialog();
+        const project = document.querySelector("content.project");
+        const projectId = project.getAttribute("id");
+        renderNewTaskDialog(projectId);
     });
 
     newProjectBtn.addEventListener("click", () => {
@@ -53,8 +58,29 @@ function setupSidebarButtons() {
     });
 }
 
-function renderNewTaskDialog() {
+function renderNewTaskDialog(projectId) {
+    // use the projectId to attach the task to the project
+    // get all projects
+    // make a select list with projects as options
+    // set the default selected using the passed project Id
+
     const dialog = document.querySelector("dialog.new-task-dialog");
+    
+    const projectSelect = document.querySelector("select#project");
+
+    const allProjects = projectHandler.getAllProjects();
+
+    allProjects.forEach(project => {
+        const option = document.createElement("option");
+        option.value = project.id;
+        option.text = project.name;
+        projectSelect.appendChild(option);
+
+        if (project.id == projectId) {
+            option.setAttribute("selected","selected");
+        }
+    });
+
     dialog.showModal();
     dialog.querySelector("h1").innerText = "New Task";
 }

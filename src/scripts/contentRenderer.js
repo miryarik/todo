@@ -43,25 +43,6 @@ function renderAllTasks() {
     });
 }
 
-function renderTasks(tasks) {
-    const list = document.createElement("ul");
-    content.appendChild(list);
-
-    tasks.forEach((task) => {
-        const taskLi = document.createElement("li");
-        taskLi.setAttribute("id", task.id);
-        taskLi.innerText = task.name;
-
-        const deleteTaskBtn = document.createElement("button");
-        deleteTaskBtn.innerText = "Delete";
-        taskLi.appendChild(deleteTaskBtn);
-        deleteTaskBtn.addEventListener("click", () => {
-            taskHandler.deleteTask(task.id);
-        });
-
-        list.appendChild(taskLi);
-    });
-}
 
 function renderProject(projectId) {
     const project = projectHandler.getProjectById(projectId);
@@ -71,17 +52,22 @@ function renderProject(projectId) {
         header.innerText = project.name;
 
         content.setAttribute("class", "project");
+        content.setAttribute("id", projectId);
         content.innerHTML = project.description;
 
         // need to render these task list
+        const list = document.createElement("ul");
+        content.appendChild(list);
         const tasks = taskHandler.getTasksByProjectId(projectId);
-        renderTasks(tasks);
+        const taskBullets = getBullets(tasks);
+        taskBullets.forEach(bullet => {
+            list.appendChild(bullet);
+        });
     }
 }
 
 export const contentRenderer = {
     renderAllProjects,
     renderAllTasks,
-    renderProject,
-    renderTasks,
+    renderProject
 };

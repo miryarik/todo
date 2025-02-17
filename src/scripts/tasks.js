@@ -78,8 +78,6 @@ function saveTasksToStorage() {
         };
     });
 
-    console.log(allTasks);
-
     // update the localStorage with new storage;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(allTasks));
 }

@@ -23,6 +23,7 @@ export function getBullets(tasks) {
     tasks.forEach((task) => {
         const bullet = document.createElement("li");
         bullet.setAttribute("id", task.id);
+        bullet.setAttribute("class", "task-bullet");
 
         const name = document.createElement("h3");
         name.innerText = task.name;
@@ -30,7 +31,10 @@ export function getBullets(tasks) {
         const description = document.createElement("p");
         description.innerText = task.description;
 
+        const optionsDiv = document.createElement("div");
+        optionsDiv.setAttribute("class", "options");
         const deleteButton = document.createElement("button");
+        optionsDiv.appendChild(deleteButton);
         deleteButton.innerText = "Delete";
 
         deleteButton.addEventListener("click", () => {
@@ -41,7 +45,7 @@ export function getBullets(tasks) {
 
         bullet.appendChild(name);
         bullet.appendChild(description);
-        bullet.appendChild(deleteButton);
+        bullet.appendChild(optionsDiv);
 
         bullets.push(bullet);
     });
@@ -59,9 +63,6 @@ export function getCards(projects) {
         const name = document.createElement("h3");
         name.innerText = project.name;
 
-        const idPara = document.createElement("p");
-        idPara.innerText = project.id;
-
         const description = document.createElement("p");
         description.innerText = project.description;
 
@@ -75,7 +76,6 @@ export function getCards(projects) {
         });
 
         card.appendChild(name);
-        card.appendChild(idPara);
         card.appendChild(description);
         card.appendChild(deleteButton);
 

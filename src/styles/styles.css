@@ -133,6 +133,9 @@ body {
             vertical-align: center;
 
             background-color: var(--blue-light);
+
+            border-bottom: 6px solid var(--blue-main);
+            
         }
 
         content {
@@ -155,6 +158,44 @@ body {
                 padding: 20px;
                 border-radius: 12px;
             }
+
+            ul {
+                padding: 0;
+
+                li.task-bullet{
+                    list-style: none;
+    
+                    display: grid;
+                    grid-template: 1fr 1fr / 120px 1fr;
+                    grid-template-areas:
+                        "options title"
+                        "options description"
+                    ;
+                    gap: var(--minor-gap);
+    
+                    background-color: var(--blue-light);
+    
+                    margin-bottom: var(--major-gap);
+                    padding: var(--minor-gap) var(--major-gap);
+    
+                    border-radius: 12px;
+    
+                    h3 {
+                        grid-area: title;
+                        margin: 0;
+                    }
+    
+                    .options {
+                        grid-area: options;
+                    }
+    
+                    p {
+                        grid-area: description;
+                        margin: 0;
+                    }
+                }
+            }
+
 
         }
     }
