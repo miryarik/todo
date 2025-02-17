@@ -1,13 +1,33 @@
 * {
     box-sizing: border-box;
-
     --blue-main: #4285F4;
     --white-light: #F1F3F4;
-    --blue-light: #D2E3FC;
+    --blue-light: #b7d4ff;
+
+    --minor-gap: 10px;
+    --major-gap: 20px;
 
 }
 
+@font-face {
+    font-family: 'allerbold';
+    src: url('./fonts/aller_bd-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'allerregular';
+    src: url('./fonts/aller_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
+
+    font-family: 'allerregular';
 
     margin: 0;
     padding: 0;
@@ -16,18 +36,43 @@ body {
     width: 100%;
 
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 260px 1fr;
 
-
+    button {
+        padding: 8px 10px;
+        font-family: 'allerregular';
+        font-size: large;
+        color: var(--white-light);
+        background-color: var(--blue-main);
+        border: none;
+        border-radius: 8px;
+    }
+    
     sidebar {
+        
         background-color: var(--blue-main);
 
-        padding: 20px;
+        padding: var(--major-gap);
 
         display: flex;
         flex-direction: column;
         gap: 20px;
 
+
+        h1 {
+            margin: 0;
+            margin-bottom: var(--major-gap);
+        }
+
+        button {
+            padding: 8px 10px;
+            font-family: 'allerregular';
+            font-size: large;
+            color: var(--white-light);
+            background-color: var(--blue-main);
+            border: none;
+            border-radius: 8px;
+        }
 
         .sidebar-item {
             border-radius: 12px;
@@ -37,8 +82,32 @@ body {
             background-color: var(--blue-light);
 
             ul {
-                padding: 5px;
+
                 list-style: none;
+                
+                display: grid;
+                gap: var(--minor-gap);
+
+                margin: 0;
+                margin-top: var(--major-gap);
+
+                padding: 0;
+
+                max-height: 300px;
+                overflow-y: scroll;
+                scrollbar-width: none;
+
+                
+                li {
+                    text-wrap: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    padding-left: 0;
+                    padding: var(--minor-gap); 
+                    border-radius: var(--minor-gap);
+                    background-color: var(--white-light);
+                }
+
             }
         }
 
@@ -79,15 +148,11 @@ body {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
                 gap: 20px;
 
-                
-
             }
 
             card {
                 background-color: var(--blue-light);
-
                 padding: 20px;
-
                 border-radius: 12px;
             }
 

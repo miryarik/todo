@@ -65,13 +65,19 @@ function renderNewProjectDialog() {
     dialog.querySelector("h1").innerText = "New Project";
 }
 
+
 export function initSidebarEvents() {
     // sidebar navigation to projects and tasks
 
-    const tasksHead = document.querySelector("sidebar h1");
+    const tasksHead = document.querySelector("sidebar .tasks h1");
+    const projectsHead = document.querySelector("sidebar .projects h1");
 
     tasksHead.addEventListener("click", () => {
         contentRenderer.renderAllTasks();
+    });
+
+    projectsHead.addEventListener("click", () => {
+        contentRenderer.renderAllProjects();
     });
 
     setupSidebarButtons();

@@ -23,6 +23,7 @@ function renderAllProjects() {
     });
 }
 
+
 function renderAllTasks() {
     // get all tasks
     // make a list bullet for each task
