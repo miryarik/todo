@@ -69,12 +69,12 @@ function saveTasksToStorage() {
 
     const allTasks = TASKS.map((task) => {
         return {
-            "name": task.name,
-            "description": task.description,
-            "dueDate": task.dueDate,
-            "priority": task.priority,
-            "projectId": task.projectId,
-            "id": task.id,
+            name: task.name,
+            description: task.description,
+            dueDate: task.dueDate,
+            priority: task.priority,
+            projectId: task.projectId,
+            id: task.id,
         };
     });
 

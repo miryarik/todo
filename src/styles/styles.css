@@ -142,57 +142,58 @@ body {
 
             grid-row: 2;
 
-            padding: 20px;
+            padding: var(--major-gap);
 
             &.all-projects {
 
                 display: grid;
                 grid-template-rows: repeat(3, 300px);
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-                gap: 20px;
+                gap: var(--major-gap);
 
             }
 
             card {
                 background-color: var(--blue-light);
-                padding: 20px;
+                padding: var(--major-gap);
                 border-radius: 12px;
             }
 
             ul {
                 padding: 0;
+            }
 
-                li.task-bullet{
-                    list-style: none;
-    
-                    display: grid;
-                    grid-template: 1fr 1fr / 120px 1fr;
-                    grid-template-areas:
-                        "options title"
-                        "options description"
-                    ;
-                    gap: var(--minor-gap);
-    
-                    background-color: var(--blue-light);
-    
-                    margin-bottom: var(--major-gap);
-                    padding: var(--minor-gap) var(--major-gap);
-    
-                    border-radius: 12px;
-    
-                    h3 {
-                        grid-area: title;
-                        margin: 0;
-                    }
-    
-                    .options {
-                        grid-area: options;
-                    }
-    
-                    p {
-                        grid-area: description;
-                        margin: 0;
-                    }
+
+            li.task-bullet{
+                list-style: none;
+
+                display: grid;
+                grid-template: 1fr 1fr / 120px 1fr;
+                grid-template-areas:
+                    "options title"
+                    "options description"
+                ;
+                gap: var(--minor-gap);
+
+                background-color: var(--blue-light);
+
+                margin-bottom: var(--major-gap);
+                padding: var(--minor-gap) var(--major-gap);
+
+                border-radius: 12px;
+
+                h3 {
+                    grid-area: title;
+                    margin: 0;
+                }
+
+                .options {
+                    grid-area: options;
+                }
+
+                p {
+                    grid-area: description;
+                    margin: 0;
                 }
             }
 

@@ -41,8 +41,7 @@ function renderProjectList() {
     });
 }
 
-
 export const sidebarRenderer = {
     renderTaskList,
-    renderProjectList
+    renderProjectList,
 };

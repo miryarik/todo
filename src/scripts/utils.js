@@ -71,6 +71,7 @@ export function getCards(projects) {
 
         deleteButton.addEventListener("click", () => {
             projectHandler.deleteProject(project.id);
+            sidebarRenderer.renderTaskList();
             sidebarRenderer.renderProjectList();
             contentRenderer.renderAllProjects();
         });

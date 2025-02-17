@@ -4,6 +4,7 @@
 // using the PROJECTS array as runtime storage
 
 import { getNewId } from "./utils.js";
+import { taskHandler } from "./tasks.js";
 import SAMPLE_PROJECTS from "./data/projects.json";
 
 let PROJECTS = [];
@@ -100,6 +101,14 @@ function deleteProject(projectId) {
 
     // remove the element at this index
     PROJECTS.splice(idx, 1);
+
+    // remove all tasks attached to this project
+    const projectTasks = taskHandler
+        .getAllTasks()
+        .filter((task) => task.projectId == projectId);
+    projectTasks.forEach((task) => {
+        taskHandler.deleteTask(task.id);
+    });
 }
 
 export const projectHandler = {

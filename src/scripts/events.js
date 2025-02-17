@@ -23,6 +23,7 @@ function initDialogEvents() {
         contentRenderer.renderAllProjects();
 
         projectDialog.close();
+        projectDialog.querySelector("form").reset();
     });
 
     taskDialog.querySelector("button").addEventListener("click", () => {
@@ -32,12 +33,19 @@ function initDialogEvents() {
         const priority = taskDialog.querySelector("select#priority").value;
         const projectId = taskDialog.querySelector("select#project").value;
 
-        taskHandler.createNewTask(name, description, dueDate, priority, projectId);
+        taskHandler.createNewTask(
+            name,
+            description,
+            dueDate,
+            priority,
+            projectId
+        );
 
         sidebarRenderer.renderTaskList();
         contentRenderer.renderAllTasks();
 
         taskDialog.close();
+        taskDialog.querySelector("form").reset();
     });
 }
 
@@ -49,7 +57,11 @@ function setupSidebarButtons() {
 
     newTaskBtn.addEventListener("click", () => {
         const project = document.querySelector("content.project");
-        const projectId = project.getAttribute("id");
+        let projectId;
+
+        if (project) {
+            projectId = project.getAttribute("id");
+        }
         renderNewTaskDialog(projectId);
     });
 
@@ -65,19 +77,19 @@ function renderNewTaskDialog(projectId) {
     // set the default selected using the passed project Id
 
     const dialog = document.querySelector("dialog.new-task-dialog");
-    
+
     const projectSelect = document.querySelector("select#project");
 
     const allProjects = projectHandler.getAllProjects();
 
-    allProjects.forEach(project => {
+    allProjects.forEach((project) => {
         const option = document.createElement("option");
         option.value = project.id;
         option.text = project.name;
         projectSelect.appendChild(option);
 
         if (project.id == projectId) {
-            option.setAttribute("selected","selected");
+            option.setAttribute("selected", "selected");
         }
     });
 
@@ -90,7 +102,6 @@ function renderNewProjectDialog() {
     dialog.showModal();
     dialog.querySelector("h1").innerText = "New Project";
 }
-
 
 export function initSidebarEvents() {
     // sidebar navigation to projects and tasks

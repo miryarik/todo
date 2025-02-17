@@ -23,7 +23,6 @@ function renderAllProjects() {
     });
 }
 
-
 function renderAllTasks() {
     // get all tasks
     // make a list bullet for each task
@@ -43,7 +42,6 @@ function renderAllTasks() {
     });
 }
 
-
 function renderProject(projectId) {
     const project = projectHandler.getProjectById(projectId);
 
@@ -55,12 +53,12 @@ function renderProject(projectId) {
         content.setAttribute("id", projectId);
         content.innerHTML = project.description;
 
-        // need to render these task list
+        // render task list
         const list = document.createElement("ul");
         content.appendChild(list);
         const tasks = taskHandler.getTasksByProjectId(projectId);
         const taskBullets = getBullets(tasks);
-        taskBullets.forEach(bullet => {
+        taskBullets.forEach((bullet) => {
             list.appendChild(bullet);
         });
     }
@@ -69,5 +67,5 @@ function renderProject(projectId) {
 export const contentRenderer = {
     renderAllProjects,
     renderAllTasks,
-    renderProject
+    renderProject,
 };
