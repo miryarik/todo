@@ -10,7 +10,7 @@
     {
         "name": "Design Wireframes",
         "description": "Create initial wireframe layouts for main pages.",
-        "date": "15-03-2025",
+        "dueDate": "15-03-2025",
         "priority": "medium",
         "projectId": 1,
         "id": 2
@@ -18,7 +18,7 @@
     {
         "name": "Develop Frontend",
         "description": "Implement the UI based on approved designs using React.",
-        "date": "10-04-2025",
+        "dueDate": "10-04-2025",
         "priority": "high",
         "projectId": 1,
         "id": 3
@@ -26,7 +26,7 @@
     {
         "name": "Define Target Audience",
         "description": "Analyze customer data to identify target demographics.",
-        "date": "05-06-2025",
+        "dueDate": "05-06-2025",
         "priority": "high",
         "projectId": 2,
         "id": 4
@@ -34,7 +34,7 @@
     {
         "name": "Create Content Plan",
         "description": "Draft a content calendar for posts and email newsletters.",
-        "date": "15-06-2025",
+        "dueDate": "15-06-2025",
         "priority": "medium",
         "projectId": 2,
         "id": 5
@@ -42,7 +42,7 @@
     {
         "name": "Launch Campaign",
         "description": "Run social media ads and send out email sequences.",
-        "date": "01-07-2025",
+        "dueDate": "01-07-2025",
         "priority": "high",
         "projectId": 2,
         "id": 6

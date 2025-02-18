@@ -168,10 +168,10 @@ body {
                 list-style: none;
 
                 display: grid;
-                grid-template: 1fr 1fr / 120px 1fr;
+                grid-template: 1fr 1fr / 120px 1fr 120px;
                 grid-template-areas:
-                    "options title"
-                    "options description"
+                    "options title info"
+                    "options desc info"
                 ;
                 gap: var(--minor-gap);
 
@@ -186,15 +186,21 @@ body {
                     grid-area: title;
                     margin: 0;
                 }
+                
+                & > p {
+                    grid-area: desc;
+                    margin: 0;
+                }
 
                 .options {
                     grid-area: options;
                 }
 
-                p {
-                    grid-area: description;
-                    margin: 0;
+                .info {
+                    grid-area: info;
                 }
+
+
             }
 
 

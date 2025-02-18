@@ -2,6 +2,7 @@ import { projectHandler } from "./projects.js";
 import { sidebarRenderer } from "./sidebarRenderer.js";
 import { contentRenderer } from "./contentRenderer.js";
 import { taskHandler } from "./tasks.js";
+import { formatDate } from "./utils.js";
 
 function initDialogEvents() {
     // project and task lists show update to reflect changes
@@ -29,7 +30,7 @@ function initDialogEvents() {
     taskDialog.querySelector("button").addEventListener("click", () => {
         const name = taskDialog.querySelector("input#name").value;
         const description = taskDialog.querySelector("input#description").value;
-        const dueDate = taskDialog.querySelector("input#due-date").value;
+        const dueDate = formatDate(taskDialog.querySelector("input#due-date").value);
         const priority = taskDialog.querySelector("select#priority").value;
         const projectId = taskDialog.querySelector("select#project").value;
 
