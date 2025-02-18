@@ -1,7 +1,7 @@
 import { projectHandler } from "./projects.js";
 import { contentRenderer } from "./contentRenderer.js";
 import { sidebarRenderer } from "./sidebarRenderer.js";
-import { taskHandler } from "./tasks.js";
+import { renderEditProjectDialog } from "./events.js";
 
 export function getNewId() {
     // generate a new date and time based unique id (unique to a millisecond)
@@ -88,6 +88,10 @@ export function getCards(projects) {
             sidebarRenderer.renderTaskList();
             sidebarRenderer.renderProjectList();
             contentRenderer.renderAllProjects();
+        });
+
+        editButton.addEventListener("click", () => {
+            renderEditProjectDialog(project.id);
         });
 
         card.appendChild(name);

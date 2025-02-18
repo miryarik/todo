@@ -163,7 +163,7 @@ body {
         content {
 
             grid-row: 2;
-            padding: var(--major-gap);
+            padding: var(--major-gap) var(--double-gap);
 
             overflow: auto;
 

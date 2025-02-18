@@ -82,7 +82,6 @@ function getAllProjects() {
 
 function getProjectById(id) {
     // get project using specified id
-
     const projects = getAllProjects();
     return projects.find((project) => project.id == id);
 }
@@ -91,6 +90,13 @@ function createNewProject(name, description) {
     // add a project to PROJECTS array
     const project = new Project(name, description);
     PROJECTS.push(project);
+}
+
+function updateProject(projectId, name, description) {
+    // update project as per passed parameters
+    const project = getProjectById(projectId);
+    project.name = name;
+    project.description = description;
 }
 
 function deleteProject(projectId) {
@@ -117,5 +123,6 @@ export const projectHandler = {
     getAllProjects,
     getProjectById,
     createNewProject,
+    updateProject,
     deleteProject,
 };

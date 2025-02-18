@@ -9,21 +9,35 @@ function initDialogEvents() {
     // re-render lists
     // update the main content
 
-    const projectDialog = document.querySelector("dialog.new-project-dialog");
+    const newProjectDialog = document.querySelector("dialog.new-project-dialog");
+    const editProjectDialog = document.querySelector("dialog.edit-project-dialog")
     const taskDialog = document.querySelector("dialog.new-task-dialog");
 
-    projectDialog.querySelector("button").addEventListener("click", () => {
-        const name = projectDialog.querySelector("input#name").value;
-        const description =
-            projectDialog.querySelector("input#description").value;
+    newProjectDialog.querySelector("button").addEventListener("click", () => {
+        const name = newProjectDialog.querySelector("input#name").value;
+        const description = newProjectDialog.querySelector("input#description").value;
 
         projectHandler.createNewProject(name, description);
 
         sidebarRenderer.renderProjectList();
         contentRenderer.renderAllProjects();
 
-        projectDialog.close();
-        projectDialog.querySelector("form").reset();
+        newProjectDialog.close();
+        newProjectDialog.querySelector("form").reset();
+    });
+
+    editProjectDialog.querySelector("button").addEventListener("click", () => {
+        const name = editProjectDialog.querySelector("input#name").value;
+        const description = editProjectDialog.querySelector("input#description").value;
+        const projectId = editProjectDialog.getAttribute("id");
+    
+        projectHandler.updateProject(projectId, name, description);
+
+        sidebarRenderer.renderProjectList();
+        contentRenderer.renderAllProjects();
+
+        editProjectDialog.close();
+        editProjectDialog.querySelector("form").reset();
     });
 
     taskDialog.querySelector("button").addEventListener("click", () => {
@@ -101,6 +115,18 @@ function renderNewProjectDialog() {
     const dialog = document.querySelector("dialog.new-project-dialog");
     dialog.showModal();
     dialog.querySelector("h1").innerText = "New Project";
+}
+
+export function renderEditProjectDialog(projectId) {
+    const dialog = document.querySelector("dialog.edit-project-dialog");
+    dialog.setAttribute("id", projectId);
+
+    const project = projectHandler.getProjectById(projectId);
+    
+    dialog.querySelector("input#name").value = project.name;
+    dialog.querySelector("input#description").value = project.description;
+    dialog.showModal();
+    dialog.querySelector("h1").innerText = "Edit Project";
 }
 
 export function initSidebarEvents() {
