@@ -48,7 +48,17 @@ export function getBullets(tasks) {
         const date = document.createElement("p");
         const priority = document.createElement("p");
 
-        date.innerText = dayFromDate(task.dueDate);
+        const dateText = dayFromDate(task.dueDate)
+        date.innerText = dateText;
+        switch (dateText) {
+            case "Today":
+                bullet.classList.add("today");
+                break;
+        
+            case "Tomorrow":
+                bullet.classList.add("tomorrow");
+                break;
+        }
 
         priority.innerText = task.priority;
         infoDiv.appendChild(date);

@@ -3,6 +3,8 @@
     --blue-main: #4285F4;
     --white-light: #F1F3F4;
     --blue-light: #b7d4ff;
+    --yellow-light: #ffe7a0;
+    --red-light: #ffc4c0;
 
     --minor-gap: 10px;
     --major-gap: 20px;
@@ -200,6 +202,13 @@ body {
                     grid-area: info;
                 }
 
+                &.tomorrow {
+                    background-color: var(--yellow-light);
+                }
+
+                &.today {
+                    background-color: var(--red-light);
+                }
 
             }
 
