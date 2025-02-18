@@ -48,13 +48,13 @@ export function getBullets(tasks) {
         const date = document.createElement("p");
         const priority = document.createElement("p");
 
-        const dateText = dayFromDate(task.dueDate)
+        const dateText = dayFromDate(formatDate(task.dueDate));
         date.innerText = dateText;
         switch (dateText) {
             case "Today":
                 bullet.classList.add("today");
                 break;
-        
+
             case "Tomorrow":
                 bullet.classList.add("tomorrow");
                 break;
@@ -75,7 +75,11 @@ export function getBullets(tasks) {
     return bullets;
 }
 
-export function formatDate(yyyymmdd) {
+export function compareTasksByDate(taskOne, taskTwo) {
+    return taskOne.dueDate.localeCompare(taskTwo.dueDate);
+}
+
+function formatDate(yyyymmdd) {
     // transform date from yyyymmdd to ddmmyyyy
     const [year, month, day] = yyyymmdd.split("-");
     const ddmmyyyy = `${day}-${month}-${year}`;

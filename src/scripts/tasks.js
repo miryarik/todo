@@ -2,7 +2,7 @@
 // handles all CRUD operations and requests for tasks
 // in localStorage.todolist.tasks
 
-import { getNewId } from "./utils.js";
+import { getNewId, compareTasksByDate } from "./utils.js";
 import SAMPLE_TASKS from "./data/tasks.json";
 
 let TASKS = [];
@@ -84,7 +84,9 @@ function saveTasksToStorage() {
 
 function getAllTasks() {
     // return an array of all tasks in the TODOLIST
-    return TASKS;
+    // sorted by date
+    console.log(TASKS.sort(compareTasksByDate));
+    return TASKS.sort(compareTasksByDate);
 }
 
 function getTaskById(taskId) {
