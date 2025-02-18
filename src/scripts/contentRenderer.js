@@ -64,8 +64,28 @@ function renderProject(projectId) {
     }
 }
 
+function renderUpcoming() {
+    // render a bullet list of all upcoming tasks
+
+    content.setAttribute("class", "upcoming");
+    content.innerHTML = "";
+    
+    const header = document.querySelector("container header");
+    header.innerText = "Coming Tasks";
+    
+    const upcomingTasks = taskHandler.getUpcomingTasks();
+    
+    const taskBullets = getBullets(upcomingTasks);
+
+    taskBullets.forEach((bullet) => {
+        content.appendChild(bullet);
+    });
+
+}
+
 export const contentRenderer = {
     renderAllProjects,
     renderAllTasks,
     renderProject,
+    renderUpcoming
 };

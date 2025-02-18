@@ -104,10 +104,11 @@ function renderNewProjectDialog() {
 }
 
 export function initSidebarEvents() {
-    // sidebar navigation to projects and tasks
+    // sidebar navigation to upcoming, projects and tasks
 
     const tasksHead = document.querySelector("sidebar .tasks h1");
     const projectsHead = document.querySelector("sidebar .projects h1");
+    const upcomingHead = document.querySelector("sidebar .upcoming");
 
     tasksHead.addEventListener("click", () => {
         contentRenderer.renderAllTasks();
@@ -115,6 +116,10 @@ export function initSidebarEvents() {
 
     projectsHead.addEventListener("click", () => {
         contentRenderer.renderAllProjects();
+    });
+
+    upcomingHead.addEventListener("click", () => {
+        contentRenderer.renderUpcoming();
     });
 
     setupSidebarButtons();

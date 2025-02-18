@@ -2,7 +2,12 @@
 // handles all CRUD operations and requests for tasks
 // in localStorage.todolist.tasks
 
-import { getNewId, compareTasksByDate } from "./utils.js";
+import {
+    getNewId,
+    compareTasksByDate,
+    formatDate,
+    dayFromDate,
+} from "./utils.js";
 import SAMPLE_TASKS from "./data/tasks.json";
 
 let TASKS = [];
@@ -105,6 +110,17 @@ function getTasksByProjectId(projectId) {
     return projectTasks;
 }
 
+function getUpcomingTasks() {
+    // get tasks that are due today or tomorrow
+
+    const allTasks = getAllTasks();
+    const upcomingTasks = allTasks.filter((task) => {
+        const taskDate = dayFromDate(formatDate(task.dueDate));
+        return (taskDate == "Today" || taskDate == "Tomorrow");
+    });
+    return upcomingTasks;
+}
+
 function createNewTask(name, description, dueDate, priority, projectId) {
     // add task to TASKS array
     const task = new Task(name, description, dueDate, priority, projectId);
@@ -127,6 +143,7 @@ export const taskHandler = {
     getAllTasks,
     getTaskById,
     getTasksByProjectId,
+    getUpcomingTasks,
     createNewTask,
     deleteTask,
 };

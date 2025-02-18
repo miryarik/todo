@@ -19,7 +19,7 @@ export function getNewId() {
 
 export function getBullets(tasks) {
     const bullets = [];
-
+    
     tasks.forEach((task) => {
         const bullet = document.createElement("li");
         bullet.setAttribute("id", task.id);
@@ -60,9 +60,6 @@ export function getBullets(tasks) {
                 break;
         }
 
-        console.log(task.priority);
-        
-
         switch (task.priority) {
             case 3:
                 priority.innerText = "High";
@@ -95,7 +92,7 @@ export function compareTasksByDate(taskOne, taskTwo) {
     return taskOne.dueDate.localeCompare(taskTwo.dueDate);
 }
 
-function formatDate(yyyymmdd) {
+export function formatDate(yyyymmdd) {
     // transform date from yyyymmdd to ddmmyyyy
     const [year, month, day] = yyyymmdd.split("-");
     const ddmmyyyy = `${day}-${month}-${year}`;

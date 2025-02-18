@@ -8,6 +8,7 @@
 
     --minor-gap: 10px;
     --major-gap: 20px;
+    --double-gap: 40px;
 
 }
 
@@ -37,8 +38,8 @@ body {
     height: 100vh;
     width: 100%;
 
-    display: grid;
-    grid-template-columns: 260px 1fr;
+    display: flex;
+
 
     button {
         padding: 8px 10px;
@@ -51,15 +52,19 @@ body {
     }
     
     sidebar {
+
+        width: 260px;
+        overflow: auto;
+        scrollbar-width: thin;
         
         background-color: var(--blue-main);
-
         padding: var(--major-gap);
 
         display: flex;
         flex-direction: column;
-        gap: 20px;
-
+        gap: 20px;            
+        position: sticky;
+        top: var(--major-gap);
 
         h1 {
             margin: 0;
@@ -83,6 +88,13 @@ body {
 
             background-color: var(--blue-light);
 
+            &.upcoming {
+
+                h1 {
+                    margin: 0;
+                }
+            }
+
             ul {
 
                 list-style: none;
@@ -95,7 +107,7 @@ body {
 
                 padding: 0;
 
-                max-height: 300px;
+                max-height: 200px;
                 overflow-y: scroll;
                 scrollbar-width: none;
 
@@ -118,33 +130,33 @@ body {
 
 
     container {
-
+        width: calc(100vw - 250px);
         display: grid;
-        grid-template-rows: 64px 1fr;
-
+        grid-template-rows: 100px 1fr;
         background-color: var(--content-blue-light);
+
+        position: relative;
 
         header {
 
             grid-row: 1;
-
             font-size: 32px;
-
-            padding: 10px 20px;
-
+            padding: var(--major-gap);
             vertical-align: center;
-
+            border-bottom: 6px solid var(--blue-main);
             background-color: var(--blue-light);
 
-            border-bottom: 6px solid var(--blue-main);
+            position: sticky;
+            top: 0;
             
         }
 
         content {
 
             grid-row: 2;
-
             padding: var(--major-gap);
+
+            overflow: auto;
 
             &.all-projects {
 
@@ -214,7 +226,6 @@ body {
                 }
 
             }
-
 
         }
     }
