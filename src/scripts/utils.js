@@ -60,7 +60,23 @@ export function getBullets(tasks) {
                 break;
         }
 
-        priority.innerText = task.priority;
+        console.log(task.priority);
+        
+
+        switch (task.priority) {
+            case 3:
+                priority.innerText = "High";
+                break;
+
+            case 2:
+                priority.innerText = "Normal";
+                break;
+
+            case 1:
+                priority.innerText = "Low";
+                break;
+        }
+
         infoDiv.appendChild(date);
         infoDiv.appendChild(priority);
 

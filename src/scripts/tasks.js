@@ -85,7 +85,6 @@ function saveTasksToStorage() {
 function getAllTasks() {
     // return an array of all tasks in the TODOLIST
     // sorted by date
-    console.log(TASKS.sort(compareTasksByDate));
     return TASKS.sort(compareTasksByDate);
 }
 

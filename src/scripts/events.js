@@ -30,7 +30,7 @@ function initDialogEvents() {
         const name = taskDialog.querySelector("input#name").value;
         const description = taskDialog.querySelector("input#description").value;
         const dueDate = taskDialog.querySelector("input#due-date").value;
-        const priority = taskDialog.querySelector("select#priority").value;
+        const priority = Number(taskDialog.querySelector("select#priority").value);
         const projectId = taskDialog.querySelector("select#project").value;
 
         taskHandler.createNewTask(

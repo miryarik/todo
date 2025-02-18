@@ -188,10 +188,9 @@ body {
                     grid-area: title;
                     margin: 0;
                 }
-                
+
                 & > p {
                     grid-area: desc;
-                    margin: 0;
                 }
 
                 .options {
@@ -208,6 +207,10 @@ body {
 
                 &.today {
                     background-color: var(--red-light);
+                }
+
+                p {
+                    margin: 0;
                 }
 
             }

@@ -22,6 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("beforeunload", () => {
     // Save current state back to localStorage
-    projectHandler.saveProjectsToStorage();
-    taskHandler.saveTasksToStorage();
+    // projectHandler.saveProjectsToStorage();
+    // taskHandler.saveTasksToStorage();
 });
