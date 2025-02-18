@@ -47,13 +47,13 @@ export function getBullets(tasks) {
         infoDiv.setAttribute("class", "info");
         const date = document.createElement("p");
         const priority = document.createElement("p");
-        
+
         date.innerText = dayFromDate(task.dueDate);
-        
+
         priority.innerText = task.priority;
         infoDiv.appendChild(date);
         infoDiv.appendChild(priority);
-        
+
         bullet.appendChild(name);
         bullet.appendChild(description);
         bullet.appendChild(optionsDiv);
@@ -65,10 +65,9 @@ export function getBullets(tasks) {
     return bullets;
 }
 
-
 export function formatDate(yyyymmdd) {
     // transform date from yyyymmdd to ddmmyyyy
-    const [year, month, day] = yyyymmdd.split('-');
+    const [year, month, day] = yyyymmdd.split("-");
     const ddmmyyyy = `${day}-${month}-${year}`;
     return ddmmyyyy;
 }
@@ -83,32 +82,23 @@ export function dayFromDate(ddmmyyyy) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    let [dd, mm, yyyy] = ddmmyyyy.split('-');
+    let [dd, mm, yyyy] = ddmmyyyy.split("-");
     dd = Number(dd);
     mm = Number(mm);
     yyyy = Number(yyyy);
-    
-    console.log(dd, mm, yyyy);
-    console.log(today, month, year)
-    
 
-    if(mm == month && yyyy == year) {
-        
-        console.log('here');
-        
-
+    if (mm == month && yyyy == year) {
         if (dd == today) {
             return "Today";
         }
 
-        if (dd = tomorrow) {
+        if ((dd = tomorrow)) {
             return "Tomorrow";
         }
     }
 
     return ddmmyyyy;
 }
-
 
 export function getCards(projects) {
     const cards = [];
