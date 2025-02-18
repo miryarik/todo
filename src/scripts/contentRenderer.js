@@ -1,4 +1,5 @@
 import { taskHandler } from "./tasks.js";
+import { sidebarRenderer } from "./sidebarRenderer.js";
 import { projectHandler } from "./projects.js";
 import { getCards, dayFromDate, formatDate } from "./utils.js";
 

@@ -15,7 +15,7 @@ function initDialogEvents() {
 
     newProjectDialog.querySelector("button").addEventListener("click", () => {
         const name = newProjectDialog.querySelector("input#name").value;
-        const description = newProjectDialog.querySelector("input#description").value;
+        const description = newProjectDialog.querySelector("textarea#description").value;
 
         projectHandler.createNewProject(name, description);
 
@@ -28,7 +28,7 @@ function initDialogEvents() {
 
     editProjectDialog.querySelector("button").addEventListener("click", () => {
         const name = editProjectDialog.querySelector("input#name").value;
-        const description = editProjectDialog.querySelector("input#description").value;
+        const description = editProjectDialog.querySelector("textarea#description").value;
         const projectId = editProjectDialog.getAttribute("id");
     
         projectHandler.updateProject(projectId, name, description);
@@ -42,7 +42,7 @@ function initDialogEvents() {
 
     taskDialog.querySelector("button").addEventListener("click", () => {
         const name = taskDialog.querySelector("input#name").value;
-        const description = taskDialog.querySelector("input#description").value;
+        const description = taskDialog.querySelector("textarea#description").value;
         const dueDate = taskDialog.querySelector("input#due-date").value;
         const priority = Number(taskDialog.querySelector("select#priority").value);
         const projectId = taskDialog.querySelector("select#project").value;
@@ -124,7 +124,7 @@ export function renderEditProjectDialog(projectId) {
     const project = projectHandler.getProjectById(projectId);
     
     dialog.querySelector("input#name").value = project.name;
-    dialog.querySelector("input#description").value = project.description;
+    dialog.querySelector("textarea#description").value = project.description;
     dialog.showModal();
     dialog.querySelector("h1").innerText = "Edit Project";
 }
