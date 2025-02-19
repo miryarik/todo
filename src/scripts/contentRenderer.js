@@ -2,6 +2,7 @@ import { taskHandler } from "./tasks.js";
 import { sidebarRenderer } from "./sidebarRenderer.js";
 import { projectHandler } from "./projects.js";
 import { getCards, dayFromDate, formatDate } from "./utils.js";
+import { renderEditTaskDialog } from "./events.js";
 
 const content = document.querySelector("container content");
 
@@ -21,11 +22,12 @@ function getBullets(tasks) {
 
         const optionsDiv = document.createElement("div");
         optionsDiv.setAttribute("class", "options");
-        const deleteButton = document.createElement("button");
-        optionsDiv.appendChild(deleteButton);
-        deleteButton.innerText = "Delete";
+        const doneButton = document.createElement("button");
+        doneButton.setAttribute("class", "done-btn");
+        optionsDiv.appendChild(doneButton);
+        doneButton.innerText = "Done";
 
-        deleteButton.addEventListener("click", () => {
+        doneButton.addEventListener("click", () => {
             taskHandler.deleteTask(task.id);
             sidebarRenderer.renderTaskList();
             contentRenderer.renderAllTasks();
@@ -35,9 +37,13 @@ function getBullets(tasks) {
         infoDiv.setAttribute("class", "info");
         const date = document.createElement("p");
         const priority = document.createElement("p");
+        priority.innerText = "Priority : ";
+        const priorityLabel = document.createElement("span");
+        priority.appendChild(priorityLabel);
+
 
         const dateText = dayFromDate(formatDate(task.dueDate));
-        date.innerText = dateText;
+        date.innerText = `Due : ${dateText}`;
         switch (dateText) {
             case "Today":
                 bullet.classList.add("today");
@@ -50,25 +56,38 @@ function getBullets(tasks) {
 
         switch (task.priority) {
             case 3:
-                priority.innerText = "High";
+                priorityLabel.setAttribute("class", "high-priority");
+                priorityLabel.innerText = "High";
                 break;
 
             case 2:
-                priority.innerText = "Normal";
+                priorityLabel.setAttribute("class", "normal-priority");
+                priorityLabel.innerText = "Normal";
                 break;
 
             case 1:
-                priority.innerText = "Low";
+                priorityLabel.setAttribute("class", "low-priority");
+                priorityLabel.innerText = "Low";
                 break;
         }
 
+        const editButton = document.createElement("button")
+        editButton.setAttribute("class", "edit-btn");
+        editButton.innerText = "Edit";
+        
+        editButton.addEventListener("click", () => {
+            // open a dialog with task details
+            renderEditTaskDialog(task.id);
+        });
+        
         infoDiv.appendChild(date);
         infoDiv.appendChild(priority);
-
+        
         bullet.appendChild(name);
         bullet.appendChild(description);
         bullet.appendChild(optionsDiv);
         bullet.appendChild(infoDiv);
+        bullet.appendChild(editButton);
 
         bullets.push(bullet);
     });

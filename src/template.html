@@ -11,7 +11,7 @@
     <dialog class="new-project-dialog" >
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
             <textarea id="description" placeholder="description"></textarea>
             <button type="submit">Add</button>
         </form>
@@ -20,7 +20,7 @@
     <dialog class="edit-project-dialog" >
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
             <textarea id="description" placeholder="description"></textarea>
             <button type="submit">Add</button>
         </form>
@@ -29,7 +29,36 @@
     <dialog class="new-task-dialog">
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
+            <textarea id="description" placeholder="description"></textarea>
+            
+            <div class="due-date">
+                <label for="due-date">Due Date</label>
+                <input type="date" id="due-date">
+            </div>
+
+            <div class="priority">
+                <label for="priority">Priority</label>
+                <select id="priority">
+                    <option value="1">Low</option>
+                    <option value="2">Normal</option>
+                    <option value="3">High</option>
+                </select>
+            </div>
+            
+            <div class="project">
+                <label for="project">Add to project</label>
+                <select id="project"></select>
+            </div>
+
+            <button>Add</button>
+        </form>
+    </dialog>
+
+    <dialog class="edit-task-dialog">
+        <h1></h1>
+        <form method="dialog" autocomplete="off">
+            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
             <textarea id="description" placeholder="description"></textarea>
             
             <div class="due-date">

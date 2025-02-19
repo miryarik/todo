@@ -95,7 +95,6 @@ function getAllTasks() {
 
 function getTaskById(taskId) {
     // get task by specified id
-
     const tasks = getAllTasks();
     return tasks.find((task) => task.id == taskId);
 }
@@ -127,6 +126,18 @@ function createNewTask(name, description, dueDate, priority, projectId) {
     TASKS.push(task);
 }
 
+function updateTask(taskId, name, description, dueDate, priority, projectId) {
+    // update task using passed parameters
+    const task = getTaskById(taskId);
+    console.log(taskId);
+    
+    task.name = name;
+    task.description = description;
+    task.dueDate = dueDate;
+    task.priority = priority;
+    task.projectId = projectId;
+};
+
 function deleteTask(taskId) {
     // remove the task with taskId from TODOLIST.tasks
 
@@ -145,5 +156,6 @@ export const taskHandler = {
     getTasksByProjectId,
     getUpcomingTasks,
     createNewTask,
+    updateTask,
     deleteTask,
 };

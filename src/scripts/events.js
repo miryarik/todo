@@ -11,7 +11,8 @@ function initDialogEvents() {
 
     const newProjectDialog = document.querySelector("dialog.new-project-dialog");
     const editProjectDialog = document.querySelector("dialog.edit-project-dialog")
-    const taskDialog = document.querySelector("dialog.new-task-dialog");
+    const newTaskDialog = document.querySelector("dialog.new-task-dialog");
+    const editTaskDialog = document.querySelector("dialog.edit-task-dialog");
 
     newProjectDialog.querySelector("button").addEventListener("click", () => {
         const name = newProjectDialog.querySelector("input#name").value;
@@ -48,12 +49,12 @@ function initDialogEvents() {
         editProjectDialog.querySelector("button").blur();
     });
 
-    taskDialog.querySelector("button").addEventListener("click", () => {
-        const name = taskDialog.querySelector("input#name").value;
-        const description = taskDialog.querySelector("textarea#description").value;
-        const dueDate = taskDialog.querySelector("input#due-date").value;
-        const priority = Number(taskDialog.querySelector("select#priority").value);
-        const projectId = taskDialog.querySelector("select#project").value;
+    newTaskDialog.querySelector("button").addEventListener("click", () => {
+        const name = newTaskDialog.querySelector("input#name").value;
+        const description = newTaskDialog.querySelector("textarea#description").value;
+        const dueDate = newTaskDialog.querySelector("input#due-date").value;
+        const priority = Number(newTaskDialog.querySelector("select#priority").value);
+        const projectId = newTaskDialog.querySelector("select#project").value;
 
         if (name) {
             taskHandler.createNewTask(
@@ -67,11 +68,39 @@ function initDialogEvents() {
             sidebarRenderer.renderTaskList();
             contentRenderer.renderAllTasks();
 
-            taskDialog.close();
-            taskDialog.querySelector("form").reset();
+            newTaskDialog.close();
+            newTaskDialog.querySelector("form").reset();
         }
 
-        taskDialog.querySelector("button").blur();
+        newTaskDialog.querySelector("button").blur();
+    });
+
+    editTaskDialog.querySelector("button").addEventListener("click", () => {
+        const taskId = editTaskDialog.getAttribute("id");
+        const name = editTaskDialog.querySelector("input#name").value;
+        const description = editTaskDialog.querySelector("textarea#description").value;
+        const dueDate = editTaskDialog.querySelector("input#due-date").value;
+        const priority = Number(editTaskDialog.querySelector("select#priority").value);
+        const projectId = editTaskDialog.querySelector("select#project").value;
+
+        if (name) {
+            taskHandler.updateTask(
+                taskId,
+                name,
+                description,
+                dueDate,
+                priority,
+                projectId
+            );
+
+            sidebarRenderer.renderTaskList();
+            contentRenderer.renderAllTasks();
+
+            editTaskDialog.close();
+            editTaskDialog.querySelector("form").reset();
+        }
+
+        editTaskDialog.querySelector("button").blur();
     });
 }
 
@@ -104,7 +133,7 @@ function renderNewTaskDialog(projectId) {
 
     const dialog = document.querySelector("dialog.new-task-dialog");
 
-    const projectSelect = document.querySelector("select#project");
+    const projectSelect = dialog.querySelector("select#project");
     projectSelect.innerHTML = "";
     const defaultOption = document.createElement("option");
     defaultOption.innerText = "None";
@@ -127,6 +156,43 @@ function renderNewTaskDialog(projectId) {
 
     dialog.showModal();
     dialog.querySelector("h1").innerText = "New Task";
+}
+
+export function renderEditTaskDialog(taskId) {
+    // use the task id to render dialog
+    // update the task on submit
+
+    const task = taskHandler.getTaskById(taskId);
+    
+    const dialog = document.querySelector("dialog.edit-task-dialog");
+    dialog.setAttribute("id", taskId);
+    dialog.querySelector("input#name").value = task.name;
+    dialog.querySelector("textarea#description").value = task.description;
+    dialog.querySelector("input#due-date").value = task.dueDate;
+    dialog.querySelector("select#priority").value = task.priority;
+
+    const projectSelect = dialog.querySelector("select#project");
+    projectSelect.innerHTML = "";
+    const defaultOption = document.createElement("option");
+    defaultOption.innerText = "None";
+    projectSelect.appendChild(defaultOption);
+
+    const allProjects = projectHandler.getAllProjects();
+
+    allProjects.forEach((project) => {
+        const option = document.createElement("option");
+        option.value = project.id;
+        option.text = project.name;
+
+        projectSelect.appendChild(option);
+
+        if (project.id == task.projectId) {
+            option.setAttribute("selected", "selected");
+        }
+    });
+
+    dialog.showModal();
+    dialog.querySelector("h1").innerText = "Edit Task";
 }
 
 function renderNewProjectDialog() {

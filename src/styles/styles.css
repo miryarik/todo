@@ -3,6 +3,7 @@
     --blue-main: #4285F4;
     --red-main: #EA4335;
     --yellow-main: #FBBC04;
+    --green-main: #34A853;
     --white-light: #F1F3F4;
     --blue-light: #b7d4ff;
     --yellow-light: #ffecb3;
@@ -220,12 +221,14 @@ body {
                 list-style: none;
 
                 display: grid;
-                grid-template: 1fr 1fr / 120px 1fr 120px;
+                grid-template: 1fr 1fr / 80px 1fr 200px 80px;
                 grid-template-areas:
-                    "options title info"
-                    "options desc info"
+                "options title info edit"
+                "options desc info edit"
                 ;
+
                 gap: var(--minor-gap);
+                column-gap: var(--major-gap);
 
                 background-color: var(--blue-light);
 
@@ -246,10 +249,45 @@ body {
 
                 .options {
                     grid-area: options;
+                    justify-self: center;
+                    align-content: center;
+
+                    .done-btn {
+                        background-color: var(--green-main);
+                    }
                 }
 
                 .info {
                     grid-area: info;
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--minor-gap);
+                    justify-content: center;
+                    align-items: flex-start;
+
+                    padding-left: var(--major-gap);
+
+                    .high-priority {
+                        color: white;
+                        background-color: var(--red-main);
+                        border-radius: 6px;
+                        padding: 2px var(--minor-gap);
+                    }
+
+                    .normal-priority {
+                        color: white;
+                        background-color: var(--yellow-main);
+                        border-radius: 6px;
+                        padding: 2px var(--minor-gap);
+                    }
+
+                    .low-priority {
+                        color: white;
+                        background-color: var(--green-main);
+                        border-radius: 6px;
+                        padding: 2px var(--minor-gap);
+                    }
+
                 }
 
                 &.tomorrow {
@@ -266,6 +304,11 @@ body {
                     margin: 0;
                 }
 
+                .edit-btn {
+                    grid-area: edit;
+                    height: 40px;
+                    align-self: center;
+                }
             }
 
         }
@@ -332,6 +375,7 @@ body {
         }
     }
 
+    .edit-task-dialog[open],
     .new-task-dialog[open] {
         background-color: var(--blue-light);
         height: 420px;
