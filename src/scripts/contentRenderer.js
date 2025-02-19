@@ -41,8 +41,8 @@ function getBullets(tasks) {
         const priorityLabel = document.createElement("span");
         priority.appendChild(priorityLabel);
 
-
-        const dateText = dayFromDate(formatDate(task.dueDate));
+        const dateText = task.dueDate ? dayFromDate(formatDate(task.dueDate)) : "No date";
+        
         date.innerText = `Due : ${dateText}`;
         switch (dateText) {
             case "Today":
@@ -52,6 +52,7 @@ function getBullets(tasks) {
             case "Tomorrow":
                 bullet.classList.add("tomorrow");
                 break;
+
         }
 
         switch (task.priority) {

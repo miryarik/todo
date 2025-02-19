@@ -18,35 +18,35 @@ function initDialogEvents() {
         const name = newProjectDialog.querySelector("input#name").value;
         const description = newProjectDialog.querySelector("textarea#description").value;
 
+        newProjectDialog.querySelector("button").blur();
         if (name) {
             projectHandler.createNewProject(name, description);
-    
+            
             sidebarRenderer.renderProjectList();
             contentRenderer.renderAllProjects();
-    
-            newProjectDialog.close();
+            
             newProjectDialog.querySelector("form").reset();
+            newProjectDialog.close();
         }
 
-        newProjectDialog.querySelector("button").blur();
     });
 
     editProjectDialog.querySelector("button").addEventListener("click", () => {
         const name = editProjectDialog.querySelector("input#name").value;
         const description = editProjectDialog.querySelector("textarea#description").value;
         const projectId = editProjectDialog.getAttribute("id");
-
+        
+        editProjectDialog.querySelector("button").blur();
         if (name) {
             projectHandler.updateProject(projectId, name, description);
     
             sidebarRenderer.renderProjectList();
             contentRenderer.renderAllProjects();
     
-            editProjectDialog.close();
             editProjectDialog.querySelector("form").reset();
+            editProjectDialog.close();
         }
 
-        editProjectDialog.querySelector("button").blur();
     });
 
     newTaskDialog.querySelector("button").addEventListener("click", () => {
@@ -55,7 +55,8 @@ function initDialogEvents() {
         const dueDate = newTaskDialog.querySelector("input#due-date").value;
         const priority = Number(newTaskDialog.querySelector("select#priority").value);
         const projectId = newTaskDialog.querySelector("select#project").value;
-
+        
+        newTaskDialog.querySelector("button").blur();
         if (name) {
             taskHandler.createNewTask(
                 name,
@@ -68,11 +69,10 @@ function initDialogEvents() {
             sidebarRenderer.renderTaskList();
             contentRenderer.renderAllTasks();
 
-            newTaskDialog.close();
             newTaskDialog.querySelector("form").reset();
+            newTaskDialog.close();
         }
 
-        newTaskDialog.querySelector("button").blur();
     });
 
     editTaskDialog.querySelector("button").addEventListener("click", () => {
@@ -82,6 +82,8 @@ function initDialogEvents() {
         const dueDate = editTaskDialog.querySelector("input#due-date").value;
         const priority = Number(editTaskDialog.querySelector("select#priority").value);
         const projectId = editTaskDialog.querySelector("select#project").value;
+        
+        editTaskDialog.querySelector("button").blur();
 
         if (name) {
             taskHandler.updateTask(
@@ -96,11 +98,10 @@ function initDialogEvents() {
             sidebarRenderer.renderTaskList();
             contentRenderer.renderAllTasks();
 
-            editTaskDialog.close();
             editTaskDialog.querySelector("form").reset();
+            editTaskDialog.close();
         }
 
-        editTaskDialog.querySelector("button").blur();
     });
 }
 

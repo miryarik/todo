@@ -129,7 +129,6 @@ function createNewTask(name, description, dueDate, priority, projectId) {
 function updateTask(taskId, name, description, dueDate, priority, projectId) {
     // update task using passed parameters
     const task = getTaskById(taskId);
-    console.log(taskId);
     
     task.name = name;
     task.description = description;
