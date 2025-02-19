@@ -270,5 +270,186 @@ body {
 
         }
     }
+
+    .new-project-dialog[open],
+    .edit-project-dialog[open] {
+        
+        background-color: var(--blue-light);
+        height: 400px;
+        width: 360px;
+        
+        &::backdrop {
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        display: grid;
+        grid-template-rows: 50px 1fr;
+        gap: var(--minor-gap);
+
+        border: 4px solid var(--blue-main);
+        border-radius: 12px;
+
+        form {
+            display: grid;
+            grid-template-rows: 50px 1fr 50px;
+            gap: var(--minor-gap);
+
+            input,
+            textarea {
+                border: 2px solid grey;
+                border-radius: 8px;
+                padding: var(--minor-gap);
+                font-family: 'allerregular';
+                
+                &:focus,
+                &:hover {
+                    outline: none;
+                    cursor: pointer;
+                    border: 2px solid var(--blue-main);
+                }
+
+                &#name {
+                    font-size: 20px;
+                }
+
+                &#description {
+                    flex: 1;
+                    resize: none;
+                }
+
+            }
+            
+            button {
+                &:hover {
+                    outline: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .new-task-dialog[open] {
+        background-color: var(--blue-light);
+        height: 420px;
+        width: 360px;
+        
+        &::backdrop {
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+
+        display: grid;
+        grid-template-rows: 50px 1fr;
+        gap: var(--minor-gap);
+
+        border: 4px solid var(--blue-main);
+        border-radius: 12px;
+
+        form {
+            display: grid;
+            grid-template-rows: 50px 1fr 50px 50px 50px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                "name name"
+                "desc desc"
+                "date priority"
+                "project project"
+                "submit submit";
+            gap: var(--minor-gap);
+
+            * {
+                font-family: 'allerregular';
+            }
+
+            label {
+                font-size: 14px;
+                background-color: inherit;
+                border: none;
+            }
+            
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                height: 100%;
+
+                > input,
+                > select {
+                    height: 30px;
+                    border: 2px solid grey;
+                    border-radius: 8px;
+                    background-color: white;
+                    text-align: center;
+
+                    &:focus,
+                    &:hover {
+                        outline: none;
+                        cursor: pointer;
+                        border: 2px solid var(--blue-main);
+                    }
+                }
+            }
+            
+            input#name {
+                grid-area: name;
+                border: 2px solid grey;
+                font-size: 20px;
+                
+                &:user-invalid {
+                    border: 2px solid var(--red-main);
+                }
+
+                &:focus,
+                &:hover {
+                    outline: none;
+                    cursor: pointer;
+                    border: 2px solid var(--blue-main);
+                }
+            }
+
+
+            textarea {
+                grid-area: desc;
+                flex: 1;
+                resize: none;
+                border: 2px solid grey;
+
+                &:focus,
+                &:hover {
+                    outline: none;
+                    cursor: pointer;
+                    border: 2px solid var(--blue-main);
+                }
+            }
+
+            div.project {
+                grid-area: project;
+            }
+
+            button {
+                grid-area: submit;
+                &:hover {
+                    outline: none;
+                    cursor: pointer;
+                }
+            }
+
+
+            input,
+            textarea {
+                border-radius: 8px;
+                padding: var(--minor-gap);
+            }
+
+        }
+    }
 }
 
