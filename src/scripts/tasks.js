@@ -7,6 +7,7 @@ import {
     compareTasksByDate,
     formatDate,
     dayFromDate,
+    getSampleDate,
 } from "./utils.js";
 import SAMPLE_TASKS from "./data/tasks.json";
 
@@ -18,14 +19,29 @@ function Task(name, description, dueDate, priority, projectId, id) {
 
     this.name = name;
     this.description = description;
-    this.dueDate = dueDate;
+    this.dueDate = (dueDate < getSampleDate("today") ? getSampleDate("today") : dueDate);
     this.priority = priority;
     this.projectId = projectId;
-    this.id = id ? id : getNewId();
+    this.id = id ? id : getNewId();    
+    
 }
 
 function resetStorage() {
     // reset tasks in localStorage to sample tasks
+
+    SAMPLE_TASKS.forEach(task => {
+
+        if (task.id == 3) {
+            task.dueDate = getSampleDate("today");
+        }
+        else if (task.id == 4) {
+            task.dueDate = getSampleDate("tomorrow");
+        }
+        else {
+            task.dueDate = getSampleDate();
+        }
+    });
+    
     localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_TASKS));
 }
 
@@ -46,6 +62,7 @@ function loadTasksFromStorage() {
 
         resetStorage();
         storedTasks = getTasksFromStorage();
+        
     }
 
     const taskObjects = storedTasks.map((task) => {

@@ -3,6 +3,7 @@ import { sidebarRenderer } from "./sidebarRenderer.js";
 import { contentRenderer } from "./contentRenderer.js";
 import { taskHandler } from "./tasks.js";
 
+
 function initDialogEvents() {
     // project and task lists show update to reflect changes
     // add a new project / task
@@ -65,6 +66,7 @@ function initDialogEvents() {
         
         newTaskDialog.querySelector("button").blur();
         if (name) {
+    
             taskHandler.createNewTask(
                 name,
                 description,
@@ -79,6 +81,7 @@ function initDialogEvents() {
 
             newTaskDialog.querySelector("form").reset();
             newTaskDialog.close();
+
         }
 
     });
@@ -145,6 +148,10 @@ function renderNewTaskDialog(projectId) {
 
     const dialog = document.querySelector("dialog.new-task-dialog");
 
+    // disable past dates
+    const today = new Date().toISOString().split('T')[0];
+    dialog.querySelector("input#due-date").setAttribute("min", today);
+
     const projectSelect = dialog.querySelector("select#project");
     projectSelect.innerHTML = "";
     const defaultOption = document.createElement("option");
@@ -177,6 +184,11 @@ export function renderEditTaskDialog(taskId) {
     const task = taskHandler.getTaskById(taskId);
     
     const dialog = document.querySelector("dialog.edit-task-dialog");
+
+    // disable past dates
+    const today = new Date().toISOString().split('T')[0];
+    dialog.querySelector("input#due-date").setAttribute("min", today);
+
     dialog.setAttribute("id", taskId);
     dialog.querySelector("input#edit-task-name").value = task.name;
     dialog.querySelector("textarea#edit-task-description").value = task.description;

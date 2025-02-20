@@ -1,50 +1,50 @@
 [
     {
-        "name": "Gather Requirements",
-        "description": "Collect feedback from stakeholders and users to define key features.",
+        "name": "This is a task",
+        "description": "This is a task. It is attached to the Welcome default project.",
         "dueDate": "2025-03-05",
-        "priority": 3,
-        "projectId": 1,
-        "id": 1
-    },
-    {
-        "name": "Design Wireframes",
-        "description": "Create initial wireframe layouts for main pages.",
-        "dueDate": "2025-03-15",
-        "priority": 3,
-        "projectId": 1,
-        "id": 2
-    },
-    {
-        "name": "Develop Frontend",
-        "description": "Implement the UI based on approved designs using React.",
-        "dueDate": "2025-04-10",
         "priority": 3,
         "projectId": 1,
         "id": 3
     },
     {
-        "name": "Define Target Audience",
-        "description": "Analyze customer data to identify target demographics.",
-        "dueDate": "2025-06-05",
+        "name": "Overdue tasks get rescheduled",
+        "description": "Tasks that are not done before their due date will get rescheduled to today.",
+        "dueDate": "2025-03-15",
         "priority": 3,
-        "projectId": 2,
+        "projectId": 1,
+        "id": 1
+    },
+    {
+        "name": "Tasks can be marked done or edited",
+        "description": "Clicking done will remove the task permanently. You can also edit them.",
+        "dueDate": "2025-03-15",
+        "priority": 3,
+        "projectId": 1,
+        "id": 6
+    },
+    {
+        "name": "Tasks are color coded",
+        "description": "Task that are due today appear red, and those due tomorrow appear yellow.",
+        "dueDate": "2025-04-10",
+        "priority": 2,
+        "projectId": 1,
         "id": 4
     },
     {
-        "name": "Create Content Plan",
-        "description": "Draft a content calendar for posts and email newsletters.",
-        "dueDate": "2025-06-15",
-        "priority": 2,
-        "projectId": 2,
-        "id": 5
+        "name": "Upcoming section",
+        "description": "Upcoming section shows all tasks, from all projects, that are due today or tomorrow.",
+        "dueDate": "2025-06-05",
+        "priority": 1,
+        "projectId": 1,
+        "id": 2
     },
     {
-        "name": "Launch Campaign",
-        "description": "Run social media ads and send out email sequences.",
-        "dueDate": "2025-07-01",
+        "name": "Tasks can be made without a project",
+        "description": "You can add tasks without attaching them to a project.",
+        "dueDate": "2025-06-05",
         "priority": 1,
-        "projectId": 2,
-        "id": 6
+        "projectId": 1,
+        "id": 5
     }
 ]

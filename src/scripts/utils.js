@@ -30,6 +30,16 @@ export function formatDate(yyyymmdd) {
     return ddmmyyyy;
 }
 
+export function getSampleDate(option) {
+    const date = new Date();
+    const day = (option == "today") ? date.getDate() : (option == "tomorrow" ? date.getDate() + 1 : date.getDate() + 5);
+    // getMonth uses 0 based index
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${year}-${month}-${day}`;
+}
+
 export function dayFromDate(ddmmyyyy) {
     // get today or tommorrow from date
     // caution : Date object uses 0-based numbering for getMonth()

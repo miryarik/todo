@@ -1,12 +1,7 @@
 [
     {
-        "name": "Website Redesign",
-        "description": "Revamping the company's website to improve user experience and modernize the design.",
+        "name": "Welcome",
+        "description": "This is a default project. A project may contain multiple tasks. Click on this project to view its tasks. You can edit or delete this project as well. Deleting a project will also delete all tasks attached to it.",
         "id": 1
-    },
-    {
-        "name": "Marketing Campaign",
-        "description": "Launching a social media and email marketing campaign to increase brand awareness.",
-        "id": 2
     }
 ]
