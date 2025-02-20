@@ -12,6 +12,8 @@
     --text-blue: #285397;
     --text-grey: rgb(58, 58, 58);
 
+    --button-white: #ffffff;
+
     @media (prefers-color-scheme: dark) {
         --blue-main: #4285F4;
         --red-main: #EA4335;
@@ -66,7 +68,7 @@ body {
         padding: var(--minor-gap);
         font-family: 'allerregular';
         font-size: large;
-        color: var(--text-grey);
+        color: var(--button-white);
         background-color: var(--blue-main);
         border: none;
         border-radius: 8px;
@@ -279,7 +281,7 @@ body {
                 &:hover,
                 &:focus {
                     cursor: pointer;
-                    box-shadow: 0 0 5px var(--text-blue);
+                    box-shadow: 0 0 8px var(--text-blue);
                 }
 
             }
@@ -317,7 +319,7 @@ body {
                 &:hover,
                 &:focus {
                     cursor: pointer;
-                    box-shadow: 0 0 5px var(--text-blue);
+                    box-shadow: 0 0 8px var(--text-blue);
                 }
 
                 h3 {
@@ -437,6 +439,7 @@ body {
                 border-radius: 8px;
                 padding: var(--minor-gap);
                 font-family: 'allerregular';
+                resize: none;
                 
                 &:focus,
                 &:hover {
@@ -461,12 +464,6 @@ body {
 
             }
             
-            button {
-                &:hover {
-                    outline: none;
-                    cursor: pointer;
-                }
-            }
         }
     }
 
@@ -581,10 +578,6 @@ body {
 
             button {
                 grid-area: submit;
-                &:hover {
-                    outline: none;
-                    cursor: pointer;
-                }
             }
 
 
