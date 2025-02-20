@@ -240,7 +240,7 @@ export function initSidebarEvents() {
         contentRenderer.renderAllProjects();
     });
 
-    upcomingHead.querySelector("h1").addEventListener("click", () => {
+    upcomingHead.addEventListener("click", () => {
         contentRenderer.renderUpcoming();
     });
 

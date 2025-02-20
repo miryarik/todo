@@ -3,6 +3,8 @@ import { sidebarRenderer } from "./sidebarRenderer.js";
 import { projectHandler } from "./projects.js";
 import { getCards, dayFromDate, formatDate } from "./utils.js";
 import { renderEditTaskDialog } from "./events.js";
+import doneSrc from "../images/check.svg";
+import editSrc from "../images/edit.svg";
 
 const content = document.querySelector("container content");
 
@@ -24,8 +26,11 @@ function getBullets(tasks) {
         optionsDiv.setAttribute("class", "options");
         const doneButton = document.createElement("button");
         doneButton.setAttribute("class", "done-btn");
-        optionsDiv.appendChild(doneButton);
         doneButton.innerText = "Done";
+        const doneIcon = document.createElement("img");
+        doneIcon.src = doneSrc;
+        doneButton.appendChild(doneIcon);
+        optionsDiv.appendChild(doneButton);
 
         doneButton.addEventListener("click", () => {
             taskHandler.deleteTask(task.id);
@@ -74,7 +79,10 @@ function getBullets(tasks) {
 
         const editButton = document.createElement("button")
         editButton.setAttribute("class", "edit-btn");
-        editButton.innerText = "Edit";
+        const editIcon = document.createElement("img");
+        editIcon.src = editSrc;
+        editButton.appendChild(editIcon);
+
         
         editButton.addEventListener("click", () => {
             // open a dialog with task details

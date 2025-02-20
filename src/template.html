@@ -13,7 +13,10 @@
         <form method="dialog" autocomplete="off">
             <input type="text" id="new-project-name" placeholder="Name" name="name" maxlength="35" required >
             <textarea id="new-project-description" placeholder="description"></textarea>
-            <button type="submit">Add</button>
+            <button type="submit">
+                Add Project
+                <img src="../src/images/add.svg" alt="add-icon">
+            </button>
         </form>
     </dialog>
 
@@ -22,7 +25,10 @@
         <form method="dialog" autocomplete="off">
             <input type="text" id="edit-project-name" placeholder="Name" name="name" maxlength="35" required >
             <textarea id="edit-project-description" placeholder="description"></textarea>
-            <button type="submit">Add</button>
+            <button type="submit">
+                Update Project
+                <img src="../src/images/check.svg" alt="update-icon">
+            </button>
         </form>
     </dialog>
 
@@ -51,7 +57,10 @@
                 <select id="project"></select>
             </div>
 
-            <button>Add</button>
+            <button>
+                Add Task
+                <img src="../src/images/add.svg" alt="add-icon">
+            </button>
         </form>
     </dialog>
 
@@ -80,22 +89,29 @@
                 <select id="project"></select>
             </div>
 
-            <button>Add</button>
+            <button>
+                Update Task
+                <img src="../src/images/check.svg" alt="">
+            </button>
         </form>
     </dialog>
 
     <sidebar>
             <div class="upcoming sidebar-item">
-                <h1>Up Next</h1>
+                <h1>Upcoming</h1>
             </div>
             <div class="tasks sidebar-item">
                 <h1>Tasks</h1>
-                <button id="new-task-btn">New Task</button>
+                <button id="new-task-btn">New Task
+                    <img src="./images/add.svg">
+                </button>
                 <ul class="task-list"></ul>
             </div>
             <div class="projects sidebar-item">
                 <h1>Projects</h1>
-                <button id="new-project-btn">New Project</button>
+                <button id="new-project-btn">New Project
+                    <img src="./images/add.svg">
+                </button>
                 <ul class="project-list"></ul>
             </div>
     </sidebar>

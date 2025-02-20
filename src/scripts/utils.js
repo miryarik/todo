@@ -2,6 +2,8 @@ import { projectHandler } from "./projects.js";
 import { contentRenderer } from "./contentRenderer.js";
 import { sidebarRenderer } from "./sidebarRenderer.js";
 import { renderEditProjectDialog } from "./events.js";
+import editSrc from "../images/edit.svg";
+import deleteSrc from "../images/delete.svg";
 
 export function getNewId() {
     // generate a new date and time based unique id (unique to a millisecond)
@@ -75,13 +77,17 @@ export function getCards(projects) {
         
         const deleteButton = document.createElement("button");
         deleteButton.setAttribute("id", "delete-btn");
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = deleteSrc;
+        deleteButton.appendChild(deleteIcon);
         options.appendChild(deleteButton);
-        deleteButton.innerText = "Delete";
 
         const editButton = document.createElement("button");
         editButton.setAttribute("id", "edit-btn");
+        const editIcon = document.createElement("img");
+        editIcon.src = editSrc;
+        editButton.appendChild(editIcon);
         options.appendChild(editButton);
-        editButton.innerText = "Edit";
 
         deleteButton.addEventListener("click", () => {
             projectHandler.deleteProject(project.id);

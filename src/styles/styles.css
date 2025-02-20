@@ -4,10 +4,28 @@
     --red-main: #EA4335;
     --yellow-main: #FBBC04;
     --green-main: #34A853;
-    --white-light: #F1F3F4;
+    --white-light: #ffffff;
     --blue-light: #b7d4ff;
     --yellow-light: #ffecb3;
     --red-light: #ffc4c0;
+
+    --text-blue: #285397;
+    --text-grey: rgb(58, 58, 58);
+
+    @media (prefers-color-scheme: dark) {
+        --blue-main: #4285F4;
+        --red-main: #EA4335;
+        --yellow-main: #FBBC04;
+        --green-main: #34A853;
+        
+        --white-light: #2a2a2a;
+        --blue-light: #325b8d; 
+        --yellow-light: #927531;
+        --red-light: #973936;  
+    
+        --text-blue: #eef5ff;  
+        --text-grey: rgb(240, 240, 240);
+    }
 
     --minor-gap: 10px;
     --major-gap: 20px;
@@ -45,13 +63,26 @@ body {
 
 
     button {
-        padding: 8px 10px;
+        padding: var(--minor-gap);
         font-family: 'allerregular';
         font-size: large;
-        color: var(--white-light);
+        color: var(--text-grey);
         background-color: var(--blue-main);
         border: none;
         border-radius: 8px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: var(--minor-gap);
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            outline: 2px solid var(--text-blue);
+            outline-offset: 2px;
+
+        }
     }
     
     sidebar {
@@ -73,13 +104,18 @@ body {
         h1 {
             margin: 0;
             margin-bottom: var(--major-gap);
+            color: var(--text-blue);
+
+            &:hover {
+                cursor: pointer;
+                color: var(--blue-main);
+            }
         }
 
         button {
             padding: 8px 10px;
             font-family: 'allerregular';
             font-size: large;
-            color: var(--white-light);
             background-color: var(--blue-main);
             border: none;
             border-radius: 8px;
@@ -92,20 +128,33 @@ body {
 
             background-color: var(--blue-light);
 
-            &:hover {
-                cursor: pointer;
-            }
-
+            
             &.upcoming {
-
+                
+                display: flex;
+                gap: var(--major-gap);
+                
+                img {
+                    width: 100%;
+                }
+                
                 h1 {
                     margin: 0;
+                }
+                
+                &:hover {
+                    cursor: pointer;
+                    h1 {
+                        color: var(--blue-main);
+                    }
                 }
             }
 
             ul {
 
                 list-style: none;
+
+                color: var(--text-grey);
                 
                 display: grid;
                 gap: var(--minor-gap);
@@ -128,6 +177,11 @@ body {
                     padding: var(--minor-gap); 
                     border-radius: var(--minor-gap);
                     background-color: var(--white-light);
+
+                    &:hover {
+                        cursor: pointer;
+                        color: var(--blue-main);
+                    }
                 }
 
             }
@@ -145,6 +199,8 @@ body {
 
         position: relative;
 
+        background-color: var(--white-light);
+
         header {
 
             grid-row: 1;
@@ -153,6 +209,7 @@ body {
             align-items: center;
             
             font-size: 32px;
+            color: var(--text-blue);
             
             padding: var(--minor-gap) var(--major-gap);
             margin: var(--major-gap);
@@ -173,6 +230,7 @@ body {
             padding: var(--major-gap) var(--double-gap);
 
             overflow: auto;
+            color: var(--text-grey);
 
             &.all-projects {
 
@@ -188,8 +246,6 @@ body {
                 padding: var(--major-gap);
                 border: 4px solid var(--blue-main);
                 border-radius: 16px;
-
-                
                 
                 display: grid;
                 grid-template-rows: 24px 1fr 50px;
@@ -200,13 +256,13 @@ body {
                 ;
                 
                 h3 {
+                    color: var(--text-blue);
                     margin: 0;
                 }
                 
                 & .description {
                     overflow: hidden;
-
-                    color: rgb(56, 56, 56);
+                    color: var(--text-grey);
                 }
 
                 & .options {
@@ -220,6 +276,12 @@ body {
                     }
                 }
 
+                &:hover,
+                &:focus {
+                    cursor: pointer;
+                    box-shadow: 0 0 5px var(--text-blue);
+                }
+
             }
 
             ul {
@@ -230,9 +292,10 @@ body {
             li.task-bullet{
                 list-style: none;
                 max-height: 80px;
+                color: var(--text-blue);
 
                 display: grid;
-                grid-template: 20px 1fr / 80px 1fr 200px 80px;
+                grid-template: 20px 1fr / 80px 1fr 200px 50px;
                 grid-template-areas:
                 "options title info edit"
                 "options desc info edit"
@@ -251,6 +314,12 @@ body {
 
                 overflow: hidden;
 
+                &:hover,
+                &:focus {
+                    cursor: pointer;
+                    box-shadow: 0 0 5px var(--text-blue);
+                }
+
                 h3 {
                     grid-area: title;
                     margin: 0;
@@ -264,6 +333,7 @@ body {
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    color: var(--text-grey);
                 }
 
                 .options {
@@ -325,7 +395,6 @@ body {
 
                 .edit-btn {
                     grid-area: edit;
-                    height: 40px;
                     align-self: center;
                 }
             }
