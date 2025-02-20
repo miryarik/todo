@@ -25,6 +25,7 @@ function initDialogEvents() {
             projectHandler.createNewProject(name, description);
             
             sidebarRenderer.renderProjectList();
+            initSidebarEvents();
             contentRenderer.renderAllProjects();
             
             newProjectDialog.querySelector("form").reset();
@@ -44,6 +45,7 @@ function initDialogEvents() {
             projectHandler.updateProject(projectId, name, description);
     
             sidebarRenderer.renderProjectList();
+            initSidebarEvents();
             contentRenderer.renderAllProjects();
     
             editProjectDialog.querySelector("form").reset();
@@ -72,6 +74,7 @@ function initDialogEvents() {
             );
 
             sidebarRenderer.renderTaskList();
+            initSidebarEvents();
             contentRenderer.renderAllTasks();
 
             newTaskDialog.querySelector("form").reset();
@@ -103,6 +106,7 @@ function initDialogEvents() {
             );
 
             sidebarRenderer.renderTaskList();
+            initSidebarEvents();
             contentRenderer.renderAllTasks();
 
             editTaskDialog.querySelector("form").reset();
@@ -224,20 +228,34 @@ export function renderEditProjectDialog(projectId) {
 export function initSidebarEvents() {
     // sidebar navigation to upcoming, projects and tasks
 
-    const tasksHead = document.querySelector("sidebar .tasks h1");
-    const projectsHead = document.querySelector("sidebar .projects h1");
+    const tasksHead = document.querySelector("sidebar .tasks");
+    const projectsHead = document.querySelector("sidebar .projects");
     const upcomingHead = document.querySelector("sidebar .upcoming");
 
-    tasksHead.addEventListener("click", () => {
+    tasksHead.querySelector("h1").addEventListener("click", () => {
         contentRenderer.renderAllTasks();
     });
 
-    projectsHead.addEventListener("click", () => {
+    projectsHead.querySelector("h1").addEventListener("click", () => {
         contentRenderer.renderAllProjects();
     });
 
-    upcomingHead.addEventListener("click", () => {
+    upcomingHead.querySelector("h1").addEventListener("click", () => {
         contentRenderer.renderUpcoming();
+    });
+
+    tasksHead.querySelectorAll(".task-list-item").forEach(taskItem => {
+        const taskId = taskItem.getAttribute("id");
+        taskItem.addEventListener("click", () => {
+            renderEditTaskDialog(taskId);
+        });
+    });
+
+    projectsHead.querySelectorAll(".project-list-item").forEach(projectItem => {
+        const projectId = projectItem.getAttribute("id");
+        projectItem.addEventListener("click", () => {
+            contentRenderer.renderProject(projectId);
+        });
     });
 
     setupSidebarButtons();

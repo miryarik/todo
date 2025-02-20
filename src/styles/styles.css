@@ -92,6 +92,10 @@ body {
 
             background-color: var(--blue-light);
 
+            &:hover {
+                cursor: pointer;
+            }
+
             &.upcoming {
 
                 h1 {
@@ -118,8 +122,8 @@ body {
                 
                 li {
                     text-wrap: nowrap;
-                    text-overflow: ellipsis;
                     overflow: hidden;
+                    text-overflow: ellipsis;
                     padding-left: 0;
                     padding: var(--minor-gap); 
                     border-radius: var(--minor-gap);
@@ -185,19 +189,23 @@ body {
                 border: 4px solid var(--blue-main);
                 border-radius: 16px;
 
-                h3 {
-                    margin: 0;
-                }
-
+                
+                
                 display: grid;
                 grid-template-rows: 24px 1fr 50px;
                 grid-template-areas:
-                    "name"
-                    "desc"
-                    "options"
+                "name"
+                "desc"
+                "options"
                 ;
-
+                
+                h3 {
+                    margin: 0;
+                }
+                
                 & .description {
+                    overflow: hidden;
+
                     color: rgb(56, 56, 56);
                 }
 
@@ -368,7 +376,12 @@ body {
 
                 &[name="name"] {
                     font-size: 20px;
+                    
+                    &:invalid {
+                        border: 2px solid var(--red-main);
+                    }
                 }
+
 
                 &textarea {
                     flex: 1;
@@ -458,7 +471,7 @@ body {
                 border: 2px solid grey;
                 font-size: 20px;
                 
-                &:user-invalid {
+                &:invalid {
                     border: 2px solid var(--red-main);
                 }
 
