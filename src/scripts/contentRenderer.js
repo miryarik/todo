@@ -171,7 +171,7 @@ function renderUpcoming() {
     content.innerHTML = "";
     
     const header = document.querySelector("container header");
-    header.innerText = "Coming Tasks";
+    header.innerText = "Upcoming Tasks";
     
     const upcomingTasks = taskHandler.getUpcomingTasks();    
     const taskBullets = getBullets(upcomingTasks);

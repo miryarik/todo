@@ -1,6 +1,6 @@
 [
     {
-        "name": "Welcome",
+        "name": "Welcome to GoToDo",
         "description": "This is a default project. A project may contain multiple tasks. Click on this project to view its tasks. You can edit or delete this project as well. Deleting a project will also delete all tasks attached to it.",
         "id": 1
     }

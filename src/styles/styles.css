@@ -134,6 +134,7 @@ body {
             &.upcoming {
                 
                 display: flex;
+                justify-content: center;
                 gap: var(--major-gap);
                 
                 img {

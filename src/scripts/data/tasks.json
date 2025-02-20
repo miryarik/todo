@@ -32,7 +32,7 @@
         "id": 4
     },
     {
-        "name": "Upcoming section",
+        "name": "GoToDo section",
         "description": "Upcoming section shows all tasks, from all projects, that are due today or tomorrow.",
         "dueDate": "2025-06-05",
         "priority": 1,
