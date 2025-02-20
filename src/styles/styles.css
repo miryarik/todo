@@ -404,6 +404,8 @@ body {
 
     .new-project-dialog[open],
     .edit-project-dialog[open] {
+
+        color: var(--text-grey);
         
         background-color: var(--blue-light);
         height: 400px;
@@ -447,7 +449,7 @@ body {
                     font-size: 20px;
                     
                     &:invalid {
-                        border: 2px solid var(--red-main);
+                        outline: 4px solid var(--red-main);
                     }
                 }
 
@@ -473,7 +475,9 @@ body {
         background-color: var(--blue-light);
         height: 420px;
         width: 360px;
-        
+
+        color: var(--text-grey);
+
         &::backdrop {
             backdrop-filter: blur(4px);
         }
@@ -534,6 +538,10 @@ body {
                     }
                 }
             }
+
+            input[type="date"] {
+                padding: 0;
+              }
             
             input[name="name"] {
                 grid-area: name;
@@ -541,7 +549,7 @@ body {
                 font-size: 20px;
                 
                 &:invalid {
-                    border: 2px solid var(--red-main);
+                    outline: 4px solid var(--red-main);
                 }
 
                 &:focus,
