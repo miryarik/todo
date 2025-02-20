@@ -14,9 +14,11 @@ function initDialogEvents() {
     const newTaskDialog = document.querySelector("dialog.new-task-dialog");
     const editTaskDialog = document.querySelector("dialog.edit-task-dialog");
 
-    newProjectDialog.querySelector("button").addEventListener("click", () => {
-        const name = newProjectDialog.querySelector("input#name").value;
-        const description = newProjectDialog.querySelector("textarea#description").value;
+    newProjectDialog.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+        
+        const name = newProjectDialog.querySelector("input#new-project-name").value;
+        const description = newProjectDialog.querySelector("textarea#new-project-description").value;
 
         newProjectDialog.querySelector("button").blur();
         if (name) {
@@ -28,12 +30,13 @@ function initDialogEvents() {
             newProjectDialog.querySelector("form").reset();
             newProjectDialog.close();
         }
-
     });
 
-    editProjectDialog.querySelector("button").addEventListener("click", () => {
-        const name = editProjectDialog.querySelector("input#name").value;
-        const description = editProjectDialog.querySelector("textarea#description").value;
+    editProjectDialog.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const name = editProjectDialog.querySelector("input#edit-project-name").value;
+        const description = editProjectDialog.querySelector("textarea#edit-project-description").value;
         const projectId = editProjectDialog.getAttribute("id");
         
         editProjectDialog.querySelector("button").blur();
@@ -49,9 +52,11 @@ function initDialogEvents() {
 
     });
 
-    newTaskDialog.querySelector("button").addEventListener("click", () => {
-        const name = newTaskDialog.querySelector("input#name").value;
-        const description = newTaskDialog.querySelector("textarea#description").value;
+    newTaskDialog.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const name = newTaskDialog.querySelector("input#new-task-name").value;
+        const description = newTaskDialog.querySelector("textarea#new-task-description").value;
         const dueDate = newTaskDialog.querySelector("input#due-date").value;
         const priority = Number(newTaskDialog.querySelector("select#priority").value);
         const projectId = newTaskDialog.querySelector("select#project").value;
@@ -75,10 +80,12 @@ function initDialogEvents() {
 
     });
 
-    editTaskDialog.querySelector("button").addEventListener("click", () => {
+    editTaskDialog.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+
         const taskId = editTaskDialog.getAttribute("id");
-        const name = editTaskDialog.querySelector("input#name").value;
-        const description = editTaskDialog.querySelector("textarea#description").value;
+        const name = editTaskDialog.querySelector("input#edit-task-name").value;
+        const description = editTaskDialog.querySelector("textarea#edit-task-description").value;
         const dueDate = editTaskDialog.querySelector("input#due-date").value;
         const priority = Number(editTaskDialog.querySelector("select#priority").value);
         const projectId = editTaskDialog.querySelector("select#project").value;
@@ -167,8 +174,8 @@ export function renderEditTaskDialog(taskId) {
     
     const dialog = document.querySelector("dialog.edit-task-dialog");
     dialog.setAttribute("id", taskId);
-    dialog.querySelector("input#name").value = task.name;
-    dialog.querySelector("textarea#description").value = task.description;
+    dialog.querySelector("input#edit-task-name").value = task.name;
+    dialog.querySelector("textarea#edit-task-description").value = task.description;
     dialog.querySelector("input#due-date").value = task.dueDate;
     dialog.querySelector("select#priority").value = task.priority;
 
@@ -208,8 +215,8 @@ export function renderEditProjectDialog(projectId) {
 
     const project = projectHandler.getProjectById(projectId);
     
-    dialog.querySelector("input#name").value = project.name;
-    dialog.querySelector("textarea#description").value = project.description;
+    dialog.querySelector("input#edit-project-name").value = project.name;
+    dialog.querySelector("textarea#edit-project-description").value = project.description;
     dialog.showModal();
     dialog.querySelector("h1").innerText = "Edit Project";
 }

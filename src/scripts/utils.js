@@ -48,7 +48,7 @@ export function dayFromDate(ddmmyyyy) {
             return "Today";
         }
 
-        if ((dd = tomorrow)) {
+        if ((dd == tomorrow)) {
             return "Tomorrow";
         }
     }

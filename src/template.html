@@ -11,8 +11,8 @@
     <dialog class="new-project-dialog" >
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
-            <textarea id="description" placeholder="description"></textarea>
+            <input type="text" id="new-project-name" placeholder="Name" name="name" maxlength="35" required >
+            <textarea id="new-project-description" placeholder="description" maxlength="100"></textarea>
             <button type="submit">Add</button>
         </form>
     </dialog>
@@ -20,8 +20,8 @@
     <dialog class="edit-project-dialog" >
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
-            <textarea id="description" placeholder="description"></textarea>
+            <input type="text" id="edit-project-name" placeholder="Name" name="name" maxlength="35" required >
+            <textarea id="edit-project-description" placeholder="description" maxlength="100"></textarea>
             <button type="submit">Add</button>
         </form>
     </dialog>
@@ -29,8 +29,8 @@
     <dialog class="new-task-dialog">
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
-            <textarea id="description" placeholder="description"></textarea>
+            <input type="text" id="new-task-name" placeholder="Name" name="name" maxlength="35" required >
+            <textarea id="new-task-description" placeholder="description" maxlength="150"></textarea>
             
             <div class="due-date">
                 <label for="due-date">Due Date</label>
@@ -58,8 +58,8 @@
     <dialog class="edit-task-dialog">
         <h1></h1>
         <form method="dialog" autocomplete="off">
-            <input type="text" id="name" placeholder="Name" name="name" required autofocus>
-            <textarea id="description" placeholder="description"></textarea>
+            <input type="text" id="edit-task-name" placeholder="Name" name="name" maxlength="35" required >
+            <textarea id="edit-task-description" placeholder="description" maxlength="150"></textarea>
             
             <div class="due-date">
                 <label for="due-date">Due Date</label>
