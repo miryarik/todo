@@ -37,7 +37,8 @@ export function getSampleDate(option) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    return `${year}-${month}-${day}`;
+    // return with padding adjustments
+    return `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
 }
 
 export function dayFromDate(ddmmyyyy) {

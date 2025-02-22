@@ -20,6 +20,8 @@ function Task(name, description, dueDate, priority, projectId, id) {
     this.name = name;
     this.description = description;
     this.dueDate = (dueDate < getSampleDate("today") ? getSampleDate("today") : dueDate);
+    console.log(dueDate, "==", this.dueDate);
+    
     this.priority = priority;
     this.projectId = projectId;
     this.id = id ? id : getNewId();    
@@ -140,6 +142,7 @@ function getUpcomingTasks() {
 function createNewTask(name, description, dueDate, priority, projectId) {
     // add task to TASKS array
     const task = new Task(name, description, dueDate, priority, projectId);
+    
     TASKS.push(task);
 }
 

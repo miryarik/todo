@@ -9,7 +9,7 @@ window.tasks = taskHandler;
 window.projects = projectHandler;
 
 document.addEventListener("DOMContentLoaded", () => {
-    // what whatever we have
+    // load storage, render UI and setup listeners
     projectHandler.loadProjectsFromStorage();
     taskHandler.loadTasksFromStorage();
 
@@ -17,11 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebarRenderer.renderProjectList();
     initSidebarEvents();
 
-    contentRenderer.renderAllProjects();
+    // upcoming opens up by default
+    contentRenderer.renderUpcoming();
 });
 
 window.addEventListener("beforeunload", () => {
-    // Save current state back to localStorage
-    // projectHandler.saveProjectsToStorage();
-    // taskHandler.saveTasksToStorage();
+    // Save current state to storage
+    projectHandler.saveProjectsToStorage();
+    taskHandler.saveTasksToStorage();
 });
